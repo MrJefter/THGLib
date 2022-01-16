@@ -1,0 +1,616 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.3"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>TouHou Gyate (Graphics) Library: Файл THGLib.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="imgbin_cirno-female-touhou-project-video-game-png.png"/></td>
+  <td id="projectalign">
+   <div id="projectname">TouHou Gyate (Graphics) Library<span id="projectnumber">&#160;1.0, Revision: 1.0</span>
+   </div>
+   <div id="projectbrief">Библиотека, отрисовывающая Gyate Gyate версии некоторых персонажей из серии игр TouHou Project</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.9.3 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search",'Поиск','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('_t_h_g_lib_8h.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Функции</a> &#124;
+<a href="#var-members">Переменные</a>  </div>
+  <div class="headertitle"><div class="title">Файл THGLib.h</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;TXLib.h&quot;</code><br />
+<code>#include &lt;iostream&gt;</code><br />
+</div>
+<p><a href="_t_h_g_lib_8h_source.html">См. исходные тексты.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Функции</h2></td></tr>
+<tr class="memitem:gaab24640b0609ad08ba1ec12d759dc7da"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___drawing.html#gaab24640b0609ad08ba1ec12d759dc7da">drawCharacter</a> (string characterName, int x, int y, int size, bool accessoiresAreVisible=true, bool eyesClosed=false, bool mouthOpened=true, bool eyebrowVisible=true, bool blushVisible=true, COLORREF hairColor=0, COLORREF clothesColor=0, COLORREF eyesColor=0)</td></tr>
+<tr class="memdesc:gaab24640b0609ad08ba1ec12d759dc7da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Функция отрисовки персонажа  <a href="group___drawing.html#gaab24640b0609ad08ba1ec12d759dc7da">Подробнее...</a><br /></td></tr>
+<tr class="separator:gaab24640b0609ad08ba1ec12d759dc7da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaaaa206673539b3306efee8b069f43709"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___drawing.html#gaaaa206673539b3306efee8b069f43709">clearScreen</a> (COLORREF fillColor=RGB(255, 255, 255), COLORREF brushColor=RGB(0, 0, 0))</td></tr>
+<tr class="memdesc:gaaaa206673539b3306efee8b069f43709"><td class="mdescLeft">&#160;</td><td class="mdescRight">Функция очистки экрана  <a href="group___drawing.html#gaaaa206673539b3306efee8b069f43709">Подробнее...</a><br /></td></tr>
+<tr class="separator:gaaaa206673539b3306efee8b069f43709"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8d1411dc07deb0083d83f6ec755079fb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___local.html#ga8d1411dc07deb0083d83f6ec755079fb">replaceAndResizeCharacter</a> (int x, int y, int size)</td></tr>
+<tr class="memdesc:ga8d1411dc07deb0083d83f6ec755079fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Функция изменения размера и расположения персонажа на полотне  <a href="group___local.html#ga8d1411dc07deb0083d83f6ec755079fb">Подробнее...</a><br /></td></tr>
+<tr class="separator:ga8d1411dc07deb0083d83f6ec755079fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae7a877288308b51ed2fde2ce32e3f375"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___local.html#gae7a877288308b51ed2fde2ce32e3f375">satoriBody</a> (COLORREF hairColor, COLORREF clothesColor, int x, int y, int size)</td></tr>
+<tr class="memdesc:gae7a877288308b51ed2fde2ce32e3f375"><td class="mdescLeft">&#160;</td><td class="mdescRight">Функция отрисовки заготовки "тела" Сатори Комейдзи  <a href="group___local.html#gae7a877288308b51ed2fde2ce32e3f375">Подробнее...</a><br /></td></tr>
+<tr class="separator:gae7a877288308b51ed2fde2ce32e3f375"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9514e1366e100fa2698c51080193a7f3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___local.html#ga9514e1366e100fa2698c51080193a7f3">marisaBody</a> (COLORREF hairColor, COLORREF clothesColor, int x, int y, int size)</td></tr>
+<tr class="memdesc:ga9514e1366e100fa2698c51080193a7f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Функция отрисовки заготовки "тела" Марисы Кирисаме  <a href="group___local.html#ga9514e1366e100fa2698c51080193a7f3">Подробнее...</a><br /></td></tr>
+<tr class="separator:ga9514e1366e100fa2698c51080193a7f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga64173c41e80520c99e9712e1d87fff61"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___local.html#ga64173c41e80520c99e9712e1d87fff61">chenBody</a> (COLORREF hairColor, COLORREF clothesColor, int x, int y, int size)</td></tr>
+<tr class="memdesc:ga64173c41e80520c99e9712e1d87fff61"><td class="mdescLeft">&#160;</td><td class="mdescRight">Функция отрисовки заготовки "тела" Чэнь  <a href="group___local.html#ga64173c41e80520c99e9712e1d87fff61">Подробнее...</a><br /></td></tr>
+<tr class="separator:ga64173c41e80520c99e9712e1d87fff61"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga87feea38814a132566b01b78a5afc851"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___local.html#ga87feea38814a132566b01b78a5afc851">cirnoBody</a> (COLORREF hairColor, COLORREF clothesColor, int x, int y, int size)</td></tr>
+<tr class="memdesc:ga87feea38814a132566b01b78a5afc851"><td class="mdescLeft">&#160;</td><td class="mdescRight">Функция отрисовки заготовки "тела" Сирно  <a href="group___local.html#ga87feea38814a132566b01b78a5afc851">Подробнее...</a><br /></td></tr>
+<tr class="separator:ga87feea38814a132566b01b78a5afc851"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf38843918b219a8abacf9208b9ad6c18"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___local.html#gaf38843918b219a8abacf9208b9ad6c18">nazrinBody</a> (COLORREF hairColor, COLORREF clothesColor)</td></tr>
+<tr class="memdesc:gaf38843918b219a8abacf9208b9ad6c18"><td class="mdescLeft">&#160;</td><td class="mdescRight">Функция отрисовки заготовки "тела" Назрин  <a href="group___local.html#gaf38843918b219a8abacf9208b9ad6c18">Подробнее...</a><br /></td></tr>
+<tr class="separator:gaf38843918b219a8abacf9208b9ad6c18"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6b65fb41cfa894cc624a97fd4a80724c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___local.html#ga6b65fb41cfa894cc624a97fd4a80724c">rumiaBody</a> (COLORREF hairColor, COLORREF clothesColor, int x, int y, int size)</td></tr>
+<tr class="memdesc:ga6b65fb41cfa894cc624a97fd4a80724c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Функция отрисовки заготовки "тела" Румии  <a href="group___local.html#ga6b65fb41cfa894cc624a97fd4a80724c">Подробнее...</a><br /></td></tr>
+<tr class="separator:ga6b65fb41cfa894cc624a97fd4a80724c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4a9ce0259a2c1c9687f2bfbbe1a511db"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___local.html#ga4a9ce0259a2c1c9687f2bfbbe1a511db">drawEyes</a> (bool eyesClosed, COLORREF eyesColor)</td></tr>
+<tr class="memdesc:ga4a9ce0259a2c1c9687f2bfbbe1a511db"><td class="mdescLeft">&#160;</td><td class="mdescRight">Функция отрисовки глаз персонажа.  <a href="group___local.html#ga4a9ce0259a2c1c9687f2bfbbe1a511db">Подробнее...</a><br /></td></tr>
+<tr class="separator:ga4a9ce0259a2c1c9687f2bfbbe1a511db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
+Переменные</h2></td></tr>
+<tr class="memitem:ga4400b7148a54d8ec48a99025a5299ba2"><td class="memItemLeft" align="right" valign="top">
+const POINT&#160;</td><td class="memItemRight" valign="bottom"><b>satoriProfile</b> [63]</td></tr>
+<tr class="memdesc:ga4400b7148a54d8ec48a99025a5299ba2"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:ga4400b7148a54d8ec48a99025a5299ba2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8965afc69def49cbd86ee9990f9fbcdf"><td class="memItemLeft" align="right" valign="top">
+const POINT&#160;</td><td class="memItemRight" valign="bottom"><b>marisaProfile</b> [74]</td></tr>
+<tr class="memdesc:ga8965afc69def49cbd86ee9990f9fbcdf"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:ga8965afc69def49cbd86ee9990f9fbcdf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaabd1caaf58c0e020286995eedea00745"><td class="memItemLeft" align="right" valign="top">
+const POINT&#160;</td><td class="memItemRight" valign="bottom"><b>chenProfile</b> [67]</td></tr>
+<tr class="memdesc:gaabd1caaf58c0e020286995eedea00745"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:gaabd1caaf58c0e020286995eedea00745"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga36ef7b29dfbe29005eb471469d058274"><td class="memItemLeft" align="right" valign="top">
+const POINT&#160;</td><td class="memItemRight" valign="bottom"><b>cirnoProfile</b> [75]</td></tr>
+<tr class="memdesc:ga36ef7b29dfbe29005eb471469d058274"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:ga36ef7b29dfbe29005eb471469d058274"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa81efc88a448b3132294b8e1ea483031"><td class="memItemLeft" align="right" valign="top">
+const POINT&#160;</td><td class="memItemRight" valign="bottom"><b>nazrinProfile</b> [65]</td></tr>
+<tr class="memdesc:gaa81efc88a448b3132294b8e1ea483031"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:gaa81efc88a448b3132294b8e1ea483031"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga273ecb893de0e562bc75e51d032d1b17"><td class="memItemLeft" align="right" valign="top">
+const POINT&#160;</td><td class="memItemRight" valign="bottom"><b>faceShape</b> [68]</td></tr>
+<tr class="memdesc:ga273ecb893de0e562bc75e51d032d1b17"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:ga273ecb893de0e562bc75e51d032d1b17"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa5b358508bf8a48dcbb7bd73b7f975cc"><td class="memItemLeft" align="right" valign="top">
+const POINT&#160;</td><td class="memItemRight" valign="bottom"><b>satoriClothes</b> [21]</td></tr>
+<tr class="memdesc:gaa5b358508bf8a48dcbb7bd73b7f975cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:gaa5b358508bf8a48dcbb7bd73b7f975cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae112ea35ceda1777b1139cdad70c9f1e"><td class="memItemLeft" align="right" valign="top">
+const POINT&#160;</td><td class="memItemRight" valign="bottom"><b>marisaClothes</b> [26]</td></tr>
+<tr class="memdesc:gae112ea35ceda1777b1139cdad70c9f1e"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:gae112ea35ceda1777b1139cdad70c9f1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga416cd39ba22348e2d65950ad6ae36fb0"><td class="memItemLeft" align="right" valign="top">
+const POINT&#160;</td><td class="memItemRight" valign="bottom"><b>collar</b> [27]</td></tr>
+<tr class="memdesc:ga416cd39ba22348e2d65950ad6ae36fb0"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:ga416cd39ba22348e2d65950ad6ae36fb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga86c279b7088382323e1a911dd401b829"><td class="memItemLeft" align="right" valign="top">
+const POINT&#160;</td><td class="memItemRight" valign="bottom"><b>collarLines1</b> [8]</td></tr>
+<tr class="memdesc:ga86c279b7088382323e1a911dd401b829"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:ga86c279b7088382323e1a911dd401b829"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae4c5a893863cfdf342a83d8109527743"><td class="memItemLeft" align="right" valign="top">
+const POINT&#160;</td><td class="memItemRight" valign="bottom"><b>collarLines2</b> [8]</td></tr>
+<tr class="memdesc:gae4c5a893863cfdf342a83d8109527743"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:gae4c5a893863cfdf342a83d8109527743"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad9ed8cead2d29cba7f22a2562c797698"><td class="memItemLeft" align="right" valign="top">
+const POINT&#160;</td><td class="memItemRight" valign="bottom"><b>leftEyeOpened</b> [11]</td></tr>
+<tr class="memdesc:gad9ed8cead2d29cba7f22a2562c797698"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:gad9ed8cead2d29cba7f22a2562c797698"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7487d725ff02df31a69412b9829db384"><td class="memItemLeft" align="right" valign="top">
+const POINT&#160;</td><td class="memItemRight" valign="bottom"><b>leftEyebrow</b> [15]</td></tr>
+<tr class="memdesc:ga7487d725ff02df31a69412b9829db384"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:ga7487d725ff02df31a69412b9829db384"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3371f62adc680d7aaff2a09d5f2e4c90"><td class="memItemLeft" align="right" valign="top">
+const POINT&#160;</td><td class="memItemRight" valign="bottom"><b>leftPupil</b> [18]</td></tr>
+<tr class="memdesc:ga3371f62adc680d7aaff2a09d5f2e4c90"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:ga3371f62adc680d7aaff2a09d5f2e4c90"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9dc884c477e13f0f1e01780ecd5529b4"><td class="memItemLeft" align="right" valign="top">
+const POINT&#160;</td><td class="memItemRight" valign="bottom"><b>leftEyeClosed</b> [13]</td></tr>
+<tr class="memdesc:ga9dc884c477e13f0f1e01780ecd5529b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:ga9dc884c477e13f0f1e01780ecd5529b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0128977920cdc6cc21f7c943d5a13f40"><td class="memItemLeft" align="right" valign="top">
+const POINT&#160;</td><td class="memItemRight" valign="bottom"><b>rightEyeOpened</b> [11]</td></tr>
+<tr class="memdesc:ga0128977920cdc6cc21f7c943d5a13f40"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:ga0128977920cdc6cc21f7c943d5a13f40"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae960671871c3c75a86be8c970313df1d"><td class="memItemLeft" align="right" valign="top">
+const POINT&#160;</td><td class="memItemRight" valign="bottom"><b>rightEyebrow</b> [15]</td></tr>
+<tr class="memdesc:gae960671871c3c75a86be8c970313df1d"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:gae960671871c3c75a86be8c970313df1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3ca253e5927ffc561452ad74a9d770d8"><td class="memItemLeft" align="right" valign="top">
+const POINT&#160;</td><td class="memItemRight" valign="bottom"><b>rightPupil</b> [16]</td></tr>
+<tr class="memdesc:ga3ca253e5927ffc561452ad74a9d770d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:ga3ca253e5927ffc561452ad74a9d770d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gada88925d34bed4ad50c59f6d165fffc3"><td class="memItemLeft" align="right" valign="top">
+const POINT&#160;</td><td class="memItemRight" valign="bottom"><b>rightEyeClosed</b> [12]</td></tr>
+<tr class="memdesc:gada88925d34bed4ad50c59f6d165fffc3"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:gada88925d34bed4ad50c59f6d165fffc3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaabb1f539f38ef4e3f3d4d8aa8d8dca0e"><td class="memItemLeft" align="right" valign="top">
+const POINT&#160;</td><td class="memItemRight" valign="bottom"><b>leftBlush</b> [10]</td></tr>
+<tr class="memdesc:gaabb1f539f38ef4e3f3d4d8aa8d8dca0e"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:gaabb1f539f38ef4e3f3d4d8aa8d8dca0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae88b7e804103289ae47282f80a01ff4d"><td class="memItemLeft" align="right" valign="top">
+const POINT&#160;</td><td class="memItemRight" valign="bottom"><b>rightBlush</b> [10]</td></tr>
+<tr class="memdesc:gae88b7e804103289ae47282f80a01ff4d"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:gae88b7e804103289ae47282f80a01ff4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab8a4e3c899e69adada6f9de8e2407b32"><td class="memItemLeft" align="right" valign="top">
+const POINT&#160;</td><td class="memItemRight" valign="bottom"><b>mouth</b> [19]</td></tr>
+<tr class="memdesc:gab8a4e3c899e69adada6f9de8e2407b32"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:gab8a4e3c899e69adada6f9de8e2407b32"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gacccb258081e9d7f7e9d1ced28c12b727"><td class="memItemLeft" align="right" valign="top">
+const POINT&#160;</td><td class="memItemRight" valign="bottom"><b>leftTooth</b> [3]</td></tr>
+<tr class="memdesc:gacccb258081e9d7f7e9d1ced28c12b727"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:gacccb258081e9d7f7e9d1ced28c12b727"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2a6fd2f3e68f7cb0991c4621f2e70425"><td class="memItemLeft" align="right" valign="top">
+const POINT&#160;</td><td class="memItemRight" valign="bottom"><b>rightTooth</b> [3]</td></tr>
+<tr class="memdesc:ga2a6fd2f3e68f7cb0991c4621f2e70425"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:ga2a6fd2f3e68f7cb0991c4621f2e70425"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6b61680ab33c6fc7899a0c114904b3b5"><td class="memItemLeft" align="right" valign="top">
+const POINT&#160;</td><td class="memItemRight" valign="bottom"><b>yellowHeart</b> [16]</td></tr>
+<tr class="memdesc:ga6b61680ab33c6fc7899a0c114904b3b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:ga6b61680ab33c6fc7899a0c114904b3b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaaa9b25388b23ec21fccfbb1463bc9552"><td class="memItemLeft" align="right" valign="top">
+const POINT&#160;</td><td class="memItemRight" valign="bottom"><b>floatingEye</b> [15]</td></tr>
+<tr class="memdesc:gaaa9b25388b23ec21fccfbb1463bc9552"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:gaaa9b25388b23ec21fccfbb1463bc9552"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga397283a4cb88527a2fc59f221616fe26"><td class="memItemLeft" align="right" valign="top">
+const POINT&#160;</td><td class="memItemRight" valign="bottom"><b>cornea</b> [15]</td></tr>
+<tr class="memdesc:ga397283a4cb88527a2fc59f221616fe26"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:ga397283a4cb88527a2fc59f221616fe26"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8528f1386bcf878f8c1cdfd7de1c7796"><td class="memItemLeft" align="right" valign="top">
+const POINT&#160;</td><td class="memItemRight" valign="bottom"><b>floatingEyePupil</b> [10]</td></tr>
+<tr class="memdesc:ga8528f1386bcf878f8c1cdfd7de1c7796"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:ga8528f1386bcf878f8c1cdfd7de1c7796"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga32a4178a838bf0540dffc29f22716570"><td class="memItemLeft" align="right" valign="top">
+const POINT&#160;</td><td class="memItemRight" valign="bottom"><b>marisaSlings1</b> [4]</td></tr>
+<tr class="memdesc:ga32a4178a838bf0540dffc29f22716570"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:ga32a4178a838bf0540dffc29f22716570"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga20b5adfd06277bcc19ed2e028f8394fd"><td class="memItemLeft" align="right" valign="top">
+const POINT&#160;</td><td class="memItemRight" valign="bottom"><b>marisaSlings2</b> [6]</td></tr>
+<tr class="memdesc:ga20b5adfd06277bcc19ed2e028f8394fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:ga20b5adfd06277bcc19ed2e028f8394fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gacba07bfce5dd12adf2b07352829be699"><td class="memItemLeft" align="right" valign="top">
+const POINT&#160;</td><td class="memItemRight" valign="bottom"><b>marisaHat</b> [71]</td></tr>
+<tr class="memdesc:gacba07bfce5dd12adf2b07352829be699"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:gacba07bfce5dd12adf2b07352829be699"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa957061af7dda568003bbe85d8bf5b4a"><td class="memItemLeft" align="right" valign="top">
+const POINT&#160;</td><td class="memItemRight" valign="bottom"><b>marisaBow</b> [71]</td></tr>
+<tr class="memdesc:gaa957061af7dda568003bbe85d8bf5b4a"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:gaa957061af7dda568003bbe85d8bf5b4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2e33bc9b43b60b0e0dbc85597bef7234"><td class="memItemLeft" align="right" valign="top">
+const POINT&#160;</td><td class="memItemRight" valign="bottom"><b>chenEarLeft</b> [50]</td></tr>
+<tr class="memdesc:ga2e33bc9b43b60b0e0dbc85597bef7234"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:ga2e33bc9b43b60b0e0dbc85597bef7234"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5549991982bf1dcf612a571b8a42daad"><td class="memItemLeft" align="right" valign="top">
+const POINT&#160;</td><td class="memItemRight" valign="bottom"><b>chenEarRight</b> [19]</td></tr>
+<tr class="memdesc:ga5549991982bf1dcf612a571b8a42daad"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:ga5549991982bf1dcf612a571b8a42daad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4b0deede75dd214f9b376d697b74894c"><td class="memItemLeft" align="right" valign="top">
+const POINT&#160;</td><td class="memItemRight" valign="bottom"><b>chenHatLittlePiece</b> [13]</td></tr>
+<tr class="memdesc:ga4b0deede75dd214f9b376d697b74894c"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:ga4b0deede75dd214f9b376d697b74894c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaae16bf3f1bc0808e315499814171381d"><td class="memItemLeft" align="right" valign="top">
+const POINT&#160;</td><td class="memItemRight" valign="bottom"><b>chenHat</b> [32]</td></tr>
+<tr class="memdesc:gaae16bf3f1bc0808e315499814171381d"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:gaae16bf3f1bc0808e315499814171381d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3682899121d2c2a1917079c774875e56"><td class="memItemLeft" align="right" valign="top">
+const POINT&#160;</td><td class="memItemRight" valign="bottom"><b>chenClothes</b> [21]</td></tr>
+<tr class="memdesc:ga3682899121d2c2a1917079c774875e56"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:ga3682899121d2c2a1917079c774875e56"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0b62d67777b76492e832bec5cc5b9315"><td class="memItemLeft" align="right" valign="top">
+const POINT&#160;</td><td class="memItemRight" valign="bottom"><b>cirnoBow</b> [4]</td></tr>
+<tr class="memdesc:ga0b62d67777b76492e832bec5cc5b9315"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:ga0b62d67777b76492e832bec5cc5b9315"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga71fcc004af5e891ab9a306418297b526"><td class="memItemLeft" align="right" valign="top">
+const POINT&#160;</td><td class="memItemRight" valign="bottom"><b>cirnoHat1</b> [17]</td></tr>
+<tr class="memdesc:ga71fcc004af5e891ab9a306418297b526"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:ga71fcc004af5e891ab9a306418297b526"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1c52b367bd28a80ddbd8d58d3edc81e0"><td class="memItemLeft" align="right" valign="top">
+const POINT&#160;</td><td class="memItemRight" valign="bottom"><b>cirnoHat2</b> [9]</td></tr>
+<tr class="memdesc:ga1c52b367bd28a80ddbd8d58d3edc81e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:ga1c52b367bd28a80ddbd8d58d3edc81e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gabd8c560c428466df016ae711fd0983d4"><td class="memItemLeft" align="right" valign="top">
+const POINT&#160;</td><td class="memItemRight" valign="bottom"><b>cirnoHat3</b> [5]</td></tr>
+<tr class="memdesc:gabd8c560c428466df016ae711fd0983d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:gabd8c560c428466df016ae711fd0983d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9b4a762c4d656e3aeb2eae647fc9be86"><td class="memItemLeft" align="right" valign="top">
+const POINT&#160;</td><td class="memItemRight" valign="bottom"><b>cirnoIce1</b> [6]</td></tr>
+<tr class="memdesc:ga9b4a762c4d656e3aeb2eae647fc9be86"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:ga9b4a762c4d656e3aeb2eae647fc9be86"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga741afa2d28bfe34a772aa324c6df8883"><td class="memItemLeft" align="right" valign="top">
+const POINT&#160;</td><td class="memItemRight" valign="bottom"><b>cirnoIce2</b> [7]</td></tr>
+<tr class="memdesc:ga741afa2d28bfe34a772aa324c6df8883"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:ga741afa2d28bfe34a772aa324c6df8883"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac79659a3f930b9d7118f8c3d0bc097d0"><td class="memItemLeft" align="right" valign="top">
+const POINT&#160;</td><td class="memItemRight" valign="bottom"><b>cirnoIce3</b> [7]</td></tr>
+<tr class="memdesc:gac79659a3f930b9d7118f8c3d0bc097d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:gac79659a3f930b9d7118f8c3d0bc097d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga864272828d7267c2bfcbb1ed7bd9d218"><td class="memItemLeft" align="right" valign="top">
+const POINT&#160;</td><td class="memItemRight" valign="bottom"><b>cirnoIce4</b> [4]</td></tr>
+<tr class="memdesc:ga864272828d7267c2bfcbb1ed7bd9d218"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:ga864272828d7267c2bfcbb1ed7bd9d218"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga638e2a1252d42de65adadfc25c63c80c"><td class="memItemLeft" align="right" valign="top">
+const POINT&#160;</td><td class="memItemRight" valign="bottom"><b>nazrinClothes</b> [15]</td></tr>
+<tr class="memdesc:ga638e2a1252d42de65adadfc25c63c80c"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:ga638e2a1252d42de65adadfc25c63c80c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8a767e4699e38cfb51810134f91d6af7"><td class="memItemLeft" align="right" valign="top">
+const POINT&#160;</td><td class="memItemRight" valign="bottom"><b>nazrinClothesLines</b> [23]</td></tr>
+<tr class="memdesc:ga8a767e4699e38cfb51810134f91d6af7"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:ga8a767e4699e38cfb51810134f91d6af7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga29f8b531894bccf03fa83360daa1740d"><td class="memItemLeft" align="right" valign="top">
+const POINT&#160;</td><td class="memItemRight" valign="bottom"><b>nazrinEarLeft</b> [18]</td></tr>
+<tr class="memdesc:ga29f8b531894bccf03fa83360daa1740d"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:ga29f8b531894bccf03fa83360daa1740d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab4e886319878ddee9520be883b171025"><td class="memItemLeft" align="right" valign="top">
+const POINT&#160;</td><td class="memItemRight" valign="bottom"><b>nazrinEarLeftInside</b> [12]</td></tr>
+<tr class="memdesc:gab4e886319878ddee9520be883b171025"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:gab4e886319878ddee9520be883b171025"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga46bbdf4a15092eb98411de08d1998c8f"><td class="memItemLeft" align="right" valign="top">
+const POINT&#160;</td><td class="memItemRight" valign="bottom"><b>nazrinEarRight</b> [12]</td></tr>
+<tr class="memdesc:ga46bbdf4a15092eb98411de08d1998c8f"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:ga46bbdf4a15092eb98411de08d1998c8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4e49a9156708e3deff1c1e510e3ec1cf"><td class="memItemLeft" align="right" valign="top">
+const POINT&#160;</td><td class="memItemRight" valign="bottom"><b>nazrinEarRightInside</b> [12]</td></tr>
+<tr class="memdesc:ga4e49a9156708e3deff1c1e510e3ec1cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:ga4e49a9156708e3deff1c1e510e3ec1cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaab7fb903d86b22d46fa8b4806d10b6c0"><td class="memItemLeft" align="right" valign="top">
+const POINT&#160;</td><td class="memItemRight" valign="bottom"><b>rumiaClothes</b> [16]</td></tr>
+<tr class="memdesc:gaab7fb903d86b22d46fa8b4806d10b6c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:gaab7fb903d86b22d46fa8b4806d10b6c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga32f041fc21ed5a8b7681679ae07c6c28"><td class="memItemLeft" align="right" valign="top">
+const POINT&#160;</td><td class="memItemRight" valign="bottom"><b>rumiaSlings1</b> [6]</td></tr>
+<tr class="memdesc:ga32f041fc21ed5a8b7681679ae07c6c28"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:ga32f041fc21ed5a8b7681679ae07c6c28"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga43f639e3d3ad0ada8087f3258ac088f8"><td class="memItemLeft" align="right" valign="top">
+const POINT&#160;</td><td class="memItemRight" valign="bottom"><b>rumiaSlings2</b> [6]</td></tr>
+<tr class="memdesc:ga43f639e3d3ad0ada8087f3258ac088f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:ga43f639e3d3ad0ada8087f3258ac088f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3a2dad86ba11c7b233a748d365583353"><td class="memItemLeft" align="right" valign="top">
+const POINT&#160;</td><td class="memItemRight" valign="bottom"><b>rumiaBow1</b> [4]</td></tr>
+<tr class="memdesc:ga3a2dad86ba11c7b233a748d365583353"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:ga3a2dad86ba11c7b233a748d365583353"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaff11ecd4b2fdf100fb1324b759f44812"><td class="memItemLeft" align="right" valign="top">
+const POINT&#160;</td><td class="memItemRight" valign="bottom"><b>rumiaBow2</b> [4]</td></tr>
+<tr class="memdesc:gaff11ecd4b2fdf100fb1324b759f44812"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:gaff11ecd4b2fdf100fb1324b759f44812"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6f17a64568d46aeed58ef166ebdca5e3"><td class="memItemLeft" align="right" valign="top">
+const POINT&#160;</td><td class="memItemRight" valign="bottom"><b>rumiaBow1W</b> [4]</td></tr>
+<tr class="memdesc:ga6f17a64568d46aeed58ef166ebdca5e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:ga6f17a64568d46aeed58ef166ebdca5e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga46a5a63aeda195fd85660046801f1ba5"><td class="memItemLeft" align="right" valign="top">
+const POINT&#160;</td><td class="memItemRight" valign="bottom"><b>rumiaBow2W</b> [4]</td></tr>
+<tr class="memdesc:ga46a5a63aeda195fd85660046801f1ba5"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:ga46a5a63aeda195fd85660046801f1ba5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa79058455ec0b850b5f03685c4e0db9a"><td class="memItemLeft" align="right" valign="top">
+const POINT&#160;</td><td class="memItemRight" valign="bottom"><b>rumiaRedTriangle</b> [3]</td></tr>
+<tr class="memdesc:gaa79058455ec0b850b5f03685c4e0db9a"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:gaa79058455ec0b850b5f03685c4e0db9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2be07edd5dc60853f2ef600a72605905"><td class="memItemLeft" align="right" valign="top">
+POINT&#160;</td><td class="memItemRight" valign="bottom"><b>satoriProfileT</b> [63]</td></tr>
+<tr class="memdesc:ga2be07edd5dc60853f2ef600a72605905"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:ga2be07edd5dc60853f2ef600a72605905"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gabde2ec9bb4f6f4625dced80bc15c4712"><td class="memItemLeft" align="right" valign="top">
+POINT&#160;</td><td class="memItemRight" valign="bottom"><b>marisaProfileT</b> [74]</td></tr>
+<tr class="memdesc:gabde2ec9bb4f6f4625dced80bc15c4712"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:gabde2ec9bb4f6f4625dced80bc15c4712"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga53c4b9b10f2e14c1074b8472ab2e8800"><td class="memItemLeft" align="right" valign="top">
+POINT&#160;</td><td class="memItemRight" valign="bottom"><b>chenProfileT</b> [67]</td></tr>
+<tr class="memdesc:ga53c4b9b10f2e14c1074b8472ab2e8800"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:ga53c4b9b10f2e14c1074b8472ab2e8800"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae0d79903360196ae85ae471945d62a21"><td class="memItemLeft" align="right" valign="top">
+POINT&#160;</td><td class="memItemRight" valign="bottom"><b>cirnoProfileT</b> [75]</td></tr>
+<tr class="memdesc:gae0d79903360196ae85ae471945d62a21"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:gae0d79903360196ae85ae471945d62a21"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab33c6e3ca31f879c29393cba78642a8d"><td class="memItemLeft" align="right" valign="top">
+POINT&#160;</td><td class="memItemRight" valign="bottom"><b>faceShapeT</b> [68]</td></tr>
+<tr class="memdesc:gab33c6e3ca31f879c29393cba78642a8d"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:gab33c6e3ca31f879c29393cba78642a8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaed0d7cbb5d07cb131c6521cfa796450f"><td class="memItemLeft" align="right" valign="top">
+POINT&#160;</td><td class="memItemRight" valign="bottom"><b>satoriClothesT</b> [21]</td></tr>
+<tr class="memdesc:gaed0d7cbb5d07cb131c6521cfa796450f"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:gaed0d7cbb5d07cb131c6521cfa796450f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab0e6d3e3bd8e0dcd5d32e3c4e7db4f44"><td class="memItemLeft" align="right" valign="top">
+POINT&#160;</td><td class="memItemRight" valign="bottom"><b>marisaClothesT</b> [26]</td></tr>
+<tr class="memdesc:gab0e6d3e3bd8e0dcd5d32e3c4e7db4f44"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:gab0e6d3e3bd8e0dcd5d32e3c4e7db4f44"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad8b8386310bff3c7a5b3a29ba95754d7"><td class="memItemLeft" align="right" valign="top">
+POINT&#160;</td><td class="memItemRight" valign="bottom"><b>collarT</b> [27]</td></tr>
+<tr class="memdesc:gad8b8386310bff3c7a5b3a29ba95754d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:gad8b8386310bff3c7a5b3a29ba95754d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga23bf78539c1f689e5a55da5db5fc9c86"><td class="memItemLeft" align="right" valign="top">
+POINT&#160;</td><td class="memItemRight" valign="bottom"><b>collarLines1T</b> [8]</td></tr>
+<tr class="memdesc:ga23bf78539c1f689e5a55da5db5fc9c86"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:ga23bf78539c1f689e5a55da5db5fc9c86"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae00ff761b75166c7d3fa3c8c1cb8a8d1"><td class="memItemLeft" align="right" valign="top">
+POINT&#160;</td><td class="memItemRight" valign="bottom"><b>collarLines2T</b> [8]</td></tr>
+<tr class="memdesc:gae00ff761b75166c7d3fa3c8c1cb8a8d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:gae00ff761b75166c7d3fa3c8c1cb8a8d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga85da60ac779db862ef23f5b1af175b14"><td class="memItemLeft" align="right" valign="top">
+POINT&#160;</td><td class="memItemRight" valign="bottom"><b>leftEyeOpenedT</b> [11]</td></tr>
+<tr class="memdesc:ga85da60ac779db862ef23f5b1af175b14"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:ga85da60ac779db862ef23f5b1af175b14"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2b3456b68c7f48815ec33e661b8470f3"><td class="memItemLeft" align="right" valign="top">
+POINT&#160;</td><td class="memItemRight" valign="bottom"><b>leftEyebrowT</b> [15]</td></tr>
+<tr class="memdesc:ga2b3456b68c7f48815ec33e661b8470f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:ga2b3456b68c7f48815ec33e661b8470f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaeb9cbfe65408102434ebeef9092909d2"><td class="memItemLeft" align="right" valign="top">
+POINT&#160;</td><td class="memItemRight" valign="bottom"><b>leftPupilT</b> [18]</td></tr>
+<tr class="memdesc:gaeb9cbfe65408102434ebeef9092909d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:gaeb9cbfe65408102434ebeef9092909d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf35ad08892d80c2d7b7cb14bc64d60b4"><td class="memItemLeft" align="right" valign="top">
+POINT&#160;</td><td class="memItemRight" valign="bottom"><b>leftEyeClosedT</b> [13]</td></tr>
+<tr class="memdesc:gaf35ad08892d80c2d7b7cb14bc64d60b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:gaf35ad08892d80c2d7b7cb14bc64d60b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga372ab3c9ef382e209acf42be8c98321d"><td class="memItemLeft" align="right" valign="top">
+POINT&#160;</td><td class="memItemRight" valign="bottom"><b>rightEyeOpenedT</b> [11]</td></tr>
+<tr class="memdesc:ga372ab3c9ef382e209acf42be8c98321d"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:ga372ab3c9ef382e209acf42be8c98321d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gadc846d4a3cecc2ad70c755f12ebf101c"><td class="memItemLeft" align="right" valign="top">
+POINT&#160;</td><td class="memItemRight" valign="bottom"><b>rightEyebrowT</b> [15]</td></tr>
+<tr class="memdesc:gadc846d4a3cecc2ad70c755f12ebf101c"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:gadc846d4a3cecc2ad70c755f12ebf101c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2b68beeee8c824dfbd2a473327ccb242"><td class="memItemLeft" align="right" valign="top">
+POINT&#160;</td><td class="memItemRight" valign="bottom"><b>rightPupilT</b> [16]</td></tr>
+<tr class="memdesc:ga2b68beeee8c824dfbd2a473327ccb242"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:ga2b68beeee8c824dfbd2a473327ccb242"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8ea9eb4b1a2e3e3952846ce77f0829a4"><td class="memItemLeft" align="right" valign="top">
+POINT&#160;</td><td class="memItemRight" valign="bottom"><b>rightEyeClosedT</b> [12]</td></tr>
+<tr class="memdesc:ga8ea9eb4b1a2e3e3952846ce77f0829a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:ga8ea9eb4b1a2e3e3952846ce77f0829a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga976fb6eb992e94472635a131b5e11806"><td class="memItemLeft" align="right" valign="top">
+POINT&#160;</td><td class="memItemRight" valign="bottom"><b>leftBlushT</b> [10]</td></tr>
+<tr class="memdesc:ga976fb6eb992e94472635a131b5e11806"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:ga976fb6eb992e94472635a131b5e11806"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2a35f257abd6f3ba4d2b8ad1d8058121"><td class="memItemLeft" align="right" valign="top">
+POINT&#160;</td><td class="memItemRight" valign="bottom"><b>rightBlushT</b> [10]</td></tr>
+<tr class="memdesc:ga2a35f257abd6f3ba4d2b8ad1d8058121"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:ga2a35f257abd6f3ba4d2b8ad1d8058121"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf5e70fb4b55ce8c265a06a91351d2fce"><td class="memItemLeft" align="right" valign="top">
+POINT&#160;</td><td class="memItemRight" valign="bottom"><b>mouthT</b> [19]</td></tr>
+<tr class="memdesc:gaf5e70fb4b55ce8c265a06a91351d2fce"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:gaf5e70fb4b55ce8c265a06a91351d2fce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf42dd6b25fb5b885b20be972573625b9"><td class="memItemLeft" align="right" valign="top">
+POINT&#160;</td><td class="memItemRight" valign="bottom"><b>leftToothT</b> [3]</td></tr>
+<tr class="memdesc:gaf42dd6b25fb5b885b20be972573625b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:gaf42dd6b25fb5b885b20be972573625b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3d7ee022497d002f649ad2e73ecabcc6"><td class="memItemLeft" align="right" valign="top">
+POINT&#160;</td><td class="memItemRight" valign="bottom"><b>rightToothT</b> [3]</td></tr>
+<tr class="memdesc:ga3d7ee022497d002f649ad2e73ecabcc6"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:ga3d7ee022497d002f649ad2e73ecabcc6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4eb8e5fd8c463a8a3662b2b7f9e90dc6"><td class="memItemLeft" align="right" valign="top">
+POINT&#160;</td><td class="memItemRight" valign="bottom"><b>yellowHeartT</b> [16]</td></tr>
+<tr class="memdesc:ga4eb8e5fd8c463a8a3662b2b7f9e90dc6"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:ga4eb8e5fd8c463a8a3662b2b7f9e90dc6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa03ff69a1afdf921de99f04e9bc26470"><td class="memItemLeft" align="right" valign="top">
+POINT&#160;</td><td class="memItemRight" valign="bottom"><b>floatingEyeT</b> [15]</td></tr>
+<tr class="memdesc:gaa03ff69a1afdf921de99f04e9bc26470"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:gaa03ff69a1afdf921de99f04e9bc26470"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4fa21bb5f9e3656354ac23549aeb4db3"><td class="memItemLeft" align="right" valign="top">
+POINT&#160;</td><td class="memItemRight" valign="bottom"><b>corneaT</b> [15]</td></tr>
+<tr class="memdesc:ga4fa21bb5f9e3656354ac23549aeb4db3"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:ga4fa21bb5f9e3656354ac23549aeb4db3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaab288add345481e460f71295401c9963"><td class="memItemLeft" align="right" valign="top">
+POINT&#160;</td><td class="memItemRight" valign="bottom"><b>floatingEyePupilT</b> [10]</td></tr>
+<tr class="memdesc:gaab288add345481e460f71295401c9963"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:gaab288add345481e460f71295401c9963"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga37b3b5528bf10936f1f6caca334e3c3c"><td class="memItemLeft" align="right" valign="top">
+POINT&#160;</td><td class="memItemRight" valign="bottom"><b>marisaSlings1T</b> [4]</td></tr>
+<tr class="memdesc:ga37b3b5528bf10936f1f6caca334e3c3c"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:ga37b3b5528bf10936f1f6caca334e3c3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7c8881d0868e052cdf36541f5da57fdc"><td class="memItemLeft" align="right" valign="top">
+POINT&#160;</td><td class="memItemRight" valign="bottom"><b>marisaSlings2T</b> [6]</td></tr>
+<tr class="memdesc:ga7c8881d0868e052cdf36541f5da57fdc"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:ga7c8881d0868e052cdf36541f5da57fdc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaade0c8870329652aa58265f50de84b77"><td class="memItemLeft" align="right" valign="top">
+POINT&#160;</td><td class="memItemRight" valign="bottom"><b>marisaHatT</b> [71]</td></tr>
+<tr class="memdesc:gaade0c8870329652aa58265f50de84b77"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:gaade0c8870329652aa58265f50de84b77"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga67e6eaac13d84d5dce57f6d32d67ef75"><td class="memItemLeft" align="right" valign="top">
+POINT&#160;</td><td class="memItemRight" valign="bottom"><b>marisaBowT</b> [71]</td></tr>
+<tr class="memdesc:ga67e6eaac13d84d5dce57f6d32d67ef75"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:ga67e6eaac13d84d5dce57f6d32d67ef75"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf62f783b295facae87a248fcf119bd75"><td class="memItemLeft" align="right" valign="top">
+POINT&#160;</td><td class="memItemRight" valign="bottom"><b>chenEarLeftT</b> [50]</td></tr>
+<tr class="memdesc:gaf62f783b295facae87a248fcf119bd75"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:gaf62f783b295facae87a248fcf119bd75"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaefead8c0c383c96c49ab120229e5312e"><td class="memItemLeft" align="right" valign="top">
+POINT&#160;</td><td class="memItemRight" valign="bottom"><b>chenEarRightT</b> [19]</td></tr>
+<tr class="memdesc:gaefead8c0c383c96c49ab120229e5312e"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:gaefead8c0c383c96c49ab120229e5312e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad38330074840dd6b7627b3ca624cf099"><td class="memItemLeft" align="right" valign="top">
+POINT&#160;</td><td class="memItemRight" valign="bottom"><b>chenHatLittlePieceT</b> [13]</td></tr>
+<tr class="memdesc:gad38330074840dd6b7627b3ca624cf099"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:gad38330074840dd6b7627b3ca624cf099"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2ea027c3d26365662ffd3df5d0d50598"><td class="memItemLeft" align="right" valign="top">
+POINT&#160;</td><td class="memItemRight" valign="bottom"><b>chenHatT</b> [32]</td></tr>
+<tr class="memdesc:ga2ea027c3d26365662ffd3df5d0d50598"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:ga2ea027c3d26365662ffd3df5d0d50598"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga67da2dd84500fa2f2f191f19c0976640"><td class="memItemLeft" align="right" valign="top">
+POINT&#160;</td><td class="memItemRight" valign="bottom"><b>chenClothesT</b> [21]</td></tr>
+<tr class="memdesc:ga67da2dd84500fa2f2f191f19c0976640"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:ga67da2dd84500fa2f2f191f19c0976640"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga358d8823e38c2b993bc98f852eb9db36"><td class="memItemLeft" align="right" valign="top">
+POINT&#160;</td><td class="memItemRight" valign="bottom"><b>cirnoBowT</b> [4]</td></tr>
+<tr class="memdesc:ga358d8823e38c2b993bc98f852eb9db36"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:ga358d8823e38c2b993bc98f852eb9db36"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gafe49b8608a0f41eb4fa2a93e7bb2a992"><td class="memItemLeft" align="right" valign="top">
+POINT&#160;</td><td class="memItemRight" valign="bottom"><b>cirnoHat1T</b> [17]</td></tr>
+<tr class="memdesc:gafe49b8608a0f41eb4fa2a93e7bb2a992"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:gafe49b8608a0f41eb4fa2a93e7bb2a992"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8f46da845213b7af1c1f5bc8a933c175"><td class="memItemLeft" align="right" valign="top">
+POINT&#160;</td><td class="memItemRight" valign="bottom"><b>cirnoHat2T</b> [9]</td></tr>
+<tr class="memdesc:ga8f46da845213b7af1c1f5bc8a933c175"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:ga8f46da845213b7af1c1f5bc8a933c175"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2d14f40e2503efdf479bc6e56c2a64f8"><td class="memItemLeft" align="right" valign="top">
+POINT&#160;</td><td class="memItemRight" valign="bottom"><b>cirnoHat3T</b> [5]</td></tr>
+<tr class="memdesc:ga2d14f40e2503efdf479bc6e56c2a64f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:ga2d14f40e2503efdf479bc6e56c2a64f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gadc247252116d3765a27cf7ed3783e05d"><td class="memItemLeft" align="right" valign="top">
+POINT&#160;</td><td class="memItemRight" valign="bottom"><b>cirnoIce1T</b> [6]</td></tr>
+<tr class="memdesc:gadc247252116d3765a27cf7ed3783e05d"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:gadc247252116d3765a27cf7ed3783e05d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga808b8296dc2b6e28a365b510b36889bf"><td class="memItemLeft" align="right" valign="top">
+POINT&#160;</td><td class="memItemRight" valign="bottom"><b>cirnoIce2T</b> [7]</td></tr>
+<tr class="memdesc:ga808b8296dc2b6e28a365b510b36889bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:ga808b8296dc2b6e28a365b510b36889bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae21aad9ea7ace879fd5ed0feeda9f293"><td class="memItemLeft" align="right" valign="top">
+POINT&#160;</td><td class="memItemRight" valign="bottom"><b>cirnoIce3T</b> [7]</td></tr>
+<tr class="memdesc:gae21aad9ea7ace879fd5ed0feeda9f293"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:gae21aad9ea7ace879fd5ed0feeda9f293"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1866e922669015536aecba357c9a94df"><td class="memItemLeft" align="right" valign="top">
+POINT&#160;</td><td class="memItemRight" valign="bottom"><b>cirnoIce4T</b> [4]</td></tr>
+<tr class="memdesc:ga1866e922669015536aecba357c9a94df"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:ga1866e922669015536aecba357c9a94df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga040c02f66a4bc2688f7f382b29033ffe"><td class="memItemLeft" align="right" valign="top">
+POINT&#160;</td><td class="memItemRight" valign="bottom"><b>nazrinProfileT</b> [65]</td></tr>
+<tr class="memdesc:ga040c02f66a4bc2688f7f382b29033ffe"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:ga040c02f66a4bc2688f7f382b29033ffe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga38df70b161f10d9f7805900014c0e269"><td class="memItemLeft" align="right" valign="top">
+POINT&#160;</td><td class="memItemRight" valign="bottom"><b>nazrinClothesT</b> [15]</td></tr>
+<tr class="memdesc:ga38df70b161f10d9f7805900014c0e269"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:ga38df70b161f10d9f7805900014c0e269"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaca44ada3a70e4946177b8e4223341951"><td class="memItemLeft" align="right" valign="top">
+POINT&#160;</td><td class="memItemRight" valign="bottom"><b>nazrinClothesLinesT</b> [23]</td></tr>
+<tr class="memdesc:gaca44ada3a70e4946177b8e4223341951"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:gaca44ada3a70e4946177b8e4223341951"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac44c5b759b01e6951e63aa5eef8d5575"><td class="memItemLeft" align="right" valign="top">
+POINT&#160;</td><td class="memItemRight" valign="bottom"><b>nazrinEarLeftT</b> [18]</td></tr>
+<tr class="memdesc:gac44c5b759b01e6951e63aa5eef8d5575"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:gac44c5b759b01e6951e63aa5eef8d5575"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5c733f39b3a99ad8bbdb6c6575c9cd47"><td class="memItemLeft" align="right" valign="top">
+POINT&#160;</td><td class="memItemRight" valign="bottom"><b>nazrinEarLeftInsideT</b> [12]</td></tr>
+<tr class="memdesc:ga5c733f39b3a99ad8bbdb6c6575c9cd47"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:ga5c733f39b3a99ad8bbdb6c6575c9cd47"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6ddefeaffe4cece59feca21b5ff45abf"><td class="memItemLeft" align="right" valign="top">
+POINT&#160;</td><td class="memItemRight" valign="bottom"><b>nazrinEarRightT</b> [12]</td></tr>
+<tr class="memdesc:ga6ddefeaffe4cece59feca21b5ff45abf"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:ga6ddefeaffe4cece59feca21b5ff45abf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaad98937fdcf8349916113a33f62d3b14"><td class="memItemLeft" align="right" valign="top">
+POINT&#160;</td><td class="memItemRight" valign="bottom"><b>nazrinEarRightInsideT</b> [12]</td></tr>
+<tr class="memdesc:gaad98937fdcf8349916113a33f62d3b14"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:gaad98937fdcf8349916113a33f62d3b14"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga83cbb25d105ca050e8c02f58cef0ad2a"><td class="memItemLeft" align="right" valign="top">
+POINT&#160;</td><td class="memItemRight" valign="bottom"><b>rumiaClothesT</b> [16]</td></tr>
+<tr class="memdesc:ga83cbb25d105ca050e8c02f58cef0ad2a"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:ga83cbb25d105ca050e8c02f58cef0ad2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab8ed62d5781d916d54d035eae7fe9464"><td class="memItemLeft" align="right" valign="top">
+POINT&#160;</td><td class="memItemRight" valign="bottom"><b>rumiaSlings1T</b> [6]</td></tr>
+<tr class="memdesc:gab8ed62d5781d916d54d035eae7fe9464"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:gab8ed62d5781d916d54d035eae7fe9464"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0fe8a93e4310daace4846e151b6e4a61"><td class="memItemLeft" align="right" valign="top">
+POINT&#160;</td><td class="memItemRight" valign="bottom"><b>rumiaSlings2T</b> [6]</td></tr>
+<tr class="memdesc:ga0fe8a93e4310daace4846e151b6e4a61"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:ga0fe8a93e4310daace4846e151b6e4a61"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga54266befc6de5fe019002b6df432e67f"><td class="memItemLeft" align="right" valign="top">
+POINT&#160;</td><td class="memItemRight" valign="bottom"><b>rumiaBow1T</b> [4]</td></tr>
+<tr class="memdesc:ga54266befc6de5fe019002b6df432e67f"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:ga54266befc6de5fe019002b6df432e67f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad35eb3dea055674ef1990d3a6d3ab956"><td class="memItemLeft" align="right" valign="top">
+POINT&#160;</td><td class="memItemRight" valign="bottom"><b>rumiaBow2T</b> [4]</td></tr>
+<tr class="memdesc:gad35eb3dea055674ef1990d3a6d3ab956"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:gad35eb3dea055674ef1990d3a6d3ab956"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3f3e92201c11556801b7592c5cc819eb"><td class="memItemLeft" align="right" valign="top">
+POINT&#160;</td><td class="memItemRight" valign="bottom"><b>rumiaBow1WT</b> [4]</td></tr>
+<tr class="memdesc:ga3f3e92201c11556801b7592c5cc819eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:ga3f3e92201c11556801b7592c5cc819eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga039e026f6358ba74df3977ca55476f35"><td class="memItemLeft" align="right" valign="top">
+POINT&#160;</td><td class="memItemRight" valign="bottom"><b>rumiaBow2WT</b> [4]</td></tr>
+<tr class="memdesc:ga039e026f6358ba74df3977ca55476f35"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:ga039e026f6358ba74df3977ca55476f35"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6a78889299f102ff045ba69a968cdf05"><td class="memItemLeft" align="right" valign="top">
+POINT&#160;</td><td class="memItemRight" valign="bottom"><b>rumiaRedTriangleT</b> [3]</td></tr>
+<tr class="memdesc:ga6a78889299f102ff045ba69a968cdf05"><td class="mdescLeft">&#160;</td><td class="mdescRight">POINT массив <br /></td></tr>
+<tr class="separator:ga6a78889299f102ff045ba69a968cdf05"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="_t_h_g_lib_8h.html">THGLib.h</a></li>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
+  </ul>
+</div>
+</body>
+</html>
