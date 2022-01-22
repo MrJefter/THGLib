@@ -2,9 +2,9 @@
 //!     @mainpage
 //!     @brief      Библиотека, отрисовывающая Gyate Gyate версии некоторых персонажей из серии игр TouHou Project. \n \n
 //!     
-//!     <b>Version:</b> 1.0\n
+//!     <b>Version:</b> 1.1 \n
 //!     <b>Revision:</b> 1.0 \n
-//!     <b>Date:</b> 2022-01-15 09:30:00 +0500 \n \n
+//!     <b>Date:</b> 2022-01-22 00:21:00 +0500 \n \n
 //!
 //!     TouHou Gyate Library -- небольшая библиотека для отрисовки готовых персонажей из серии игр
 //!     TouHou Project, основанная на библиотеке <a href=http://storage.ded32.net.ru/Lib/TX/TXUpdate/Doc/HTML.ru/>TXLib</a> (Библиотека Тупого Художника) за авторством
@@ -23,8 +23,13 @@
 //!     Демо доступных в библиотеке эмоций и параметров внешности (помимо цвета):
 //!     
 //!     <img src="Emote test.gif" alt="This is how does characters looks at DC"/>
+//!     <img src="Gyate Size.png" alt="This is how does characters looks at DC"/>
 //!     
-//!     См. также страницу оригинальной библиотеки (TXLib) на <a href=http://sourceforge.net/p/txlib>SourceForge.</a>
+//!     См. также страницу оригинальной библиотеки (TXLib) на <a href=http://sourceforge.net/p/txlib>SourceForge.</a> \n
+//!     \n
+//!     <b>Установка библиотеки:</b> \n
+//!     \n
+//!     Поместите файлы 'TXLib.h' и 'THGLib.h' в корень папки вашего проекта и подключите их. Все максимально просто.
 //!
 //!
 //!     @defgroup   Drawing Рисование
@@ -834,27 +839,31 @@ POINT rumiaRedTriangleT[3];
     по вашему желанию.
 */
 //! @param   characterName              Имя персонажа из списка на главной странице.
-//! @param   x                          Координата X левого верхнего угла изображения.
-//! @param   y                          Координата Y левого верхнего угла изображения.
+//! @param   x                          Координата X начальной точки изображения.
+//! @param   y                          Координата Y начальной точки изображения.
 //! @param   size                       Множитель размера персонажа относительно стандартного (300x177).
 //! @param   accessoiresAreVisible      <i>Переключаемый параметр отображения аксессуаров. Необязателен.
-//!                                     Если не указан - присваивается значение true.</i>
+//!                                     Если не указан - присваивается значение true (отрисовка аксессуаров).</i>
 //! @param   eyesClosed                 <i>Переключаемый параметр состояния глаз. Необязателен.
-//!                                     Если не указан - присваивается значение false.</i>
+//!                                     Если не указан - присваивается значение false (отрисовка открытых глаз).</i>
 //! @param   mouthOpened                <i>Переключаемый параметр состояния рта. Необязателен.
-//!                                     Если не указан - присваивается значение true.</i>
+//!                                     Если не указан - присваивается значение true (отрисовка открытого рта).</i>
 //! @param   eyebrowVisible             <i>Переключаемый параметр отображения бровей. Необязателен.
-//!                                     Если не указан - присваивается значение true.</i>
+//!                                     Если не указан - присваивается значение true (отрисовка бровей).</i>
 //! @param   blushVisible               <i>Переключаемый параметр отображения румянца. Необязателен.
-//!                                     Если не указан - присваивается значение true.</i>
+//!                                     Если не указан - присваивается значение true (отрисовка румянца).</i>
 //! @param   hairColor                  <i>Параметр цвета волос. Необязателен.
 //!                                     Если не указан - присваивается стандартное значение для персонажа.</i>
 //! @param   clotherColor               <i>Параметр цвета одежды. Необязателен.
 //!                                     Если не указан - присваивается стандартное значение для персонажа.</i>
 //! @param   eyesColor                  <i>Параметр цвета глаз. Необязателен.
 //!                                     Если не указан - присваивается стандартное значение для персонажа.</i>
+//! @param   yMultiplierAbs             <b>(НОВОЕ)</b> <i>Переключаемый параметр отражения Y оси при отрицательном значении size. Необязателен.
+//!                                     Если не указан - присваивается true (Y ось не отражается).</i>
 //!
-//! @usage @code
+//! @note   Используйте отрицательное значение параметра size и изменяйте параметр yMultiplierAbs для поворота персонажа относительно начальной точки.
+//!
+//! @code
 //!         #include "TXLib.h"
 //!         #include "THGLib.h"
 //!
@@ -873,7 +882,7 @@ void drawCharacter(
     string characterName,
     int x,
     int y,
-    int size,
+    double size,
     bool accessoiresAreVisible = true,
     bool eyesClosed = false,
     bool mouthOpened = true,
@@ -881,7 +890,8 @@ void drawCharacter(
     bool blushVisible = true,
     COLORREF hairColor = 0,
     COLORREF clothesColor = 0,
-    COLORREF eyesColor = 0
+    COLORREF eyesColor = 0,
+    bool yMultiplierAbs = false
     );
 
 /*!
@@ -895,7 +905,7 @@ void drawCharacter(
 //! @param   brushColor                  <i>Параметр цвета кисти после очистки. Необязателен.
 //!                                     Если не указан - кисть красит в черный цвет.</i>
 //!
-//! @usage @code
+//! @code
 //!         #include "TXLib.h"
 //!         #include "THGLib.h"
 //!
@@ -922,10 +932,11 @@ void clearScreen(
     Данная функция является внутренней и используется для изменения размера изображения с персонажем и перемещения его на полотне.
     @warning Вызывать данную функцию вручную не рекомендуется (да и не имеет смысла).
 */
-//! @param   x                  Наследуемая от drawCharacter координата X левого верхнего угла изображения.
-//! @param   y                  Наследуемая от drawCharacter координата Y левого верхнего угла изображения.
+//! @param   x                  Наследуемая от drawCharacter координата X начальной точки изображения.
+//! @param   y                  Наследуемая от drawCharacter координата Y начальной точки изображения.
 //! @param   size               Наследуемый от drawCharacter множитель размера персонажа относительно стандартного (300x177).
-void replaceAndResizeCharacter(int x, int y, int size);
+//! @param   yMultiplierAbs     <b>(НОВОЕ)</b> Наследуемый от drawCharacter переключаемый параметр отражения Y оси при отрицательном значении size.
+void replaceAndResizeCharacter(int x, int y, double size, bool yMultiplierAbs);
 
 /*!
     @ingroup Local
@@ -936,10 +947,11 @@ void replaceAndResizeCharacter(int x, int y, int size);
 */
 //! @param   hairColor          Наследуемый от drawCharacter цвет волос персонажа.
 //! @param   clothesColor       Наследуемый от drawCharacter цвет одежды персонажа.
-//! @param   x                  Наследуемая от drawCharacter координата X левого верхнего угла изображения.
-//! @param   y                  Наследуемая от drawCharacter координата Y левого верхнего угла изображения.
+//! @param   x                  Наследуемая от drawCharacter координата X начальной точки изображения.
+//! @param   y                  Наследуемая от drawCharacter координата Y начальной точки изображения.
 //! @param   size               Наследуемый от drawCharacter множитель размера персонажа относительно стандартного (300x177).
-void satoriBody(COLORREF hairColor, COLORREF clothesColor, int x, int y, int size);
+//! @param   yMultiplierAbs     <b>(НОВОЕ)</b> Наследуемый от drawCharacter переключаемый параметр отражения Y оси при отрицательном значении size.
+void satoriBody(COLORREF hairColor, COLORREF clothesColor, int x, int y, double size, bool yMultiplierAbs);
 
 /*!
     @ingroup Local
@@ -950,10 +962,11 @@ void satoriBody(COLORREF hairColor, COLORREF clothesColor, int x, int y, int siz
 */
 //! @param   hairColor          Наследуемый от drawCharacter цвет волос персонажа.
 //! @param   clothesColor       Наследуемый от drawCharacter цвет одежды персонажа.
-//! @param   x                  Наследуемая от drawCharacter координата X левого верхнего угла изображения.
-//! @param   y                  Наследуемая от drawCharacter координата Y левого верхнего угла изображения.
+//! @param   x                  Наследуемая от drawCharacter координата X начальной точки изображения.
+//! @param   y                  Наследуемая от drawCharacter координата Y начальной точки изображения.
 //! @param   size               Наследуемый от drawCharacter множитель размера персонажа относительно стандартного (300x177).
-void marisaBody(COLORREF hairColor, COLORREF clothesColor, int x, int y, int size);
+//! @param   yMultiplierAbs     <b>(НОВОЕ)</b> Наследуемый от drawCharacter переключаемый параметр отражения Y оси при отрицательном значении size.
+void marisaBody(COLORREF hairColor, COLORREF clothesColor, int x, int y, double size, bool yMultiplierAbs);
 
 /*!
     @ingroup Local
@@ -964,10 +977,11 @@ void marisaBody(COLORREF hairColor, COLORREF clothesColor, int x, int y, int siz
 */
 //! @param   hairColor          Наследуемый от drawCharacter цвет волос персонажа.
 //! @param   clothesColor       Наследуемый от drawCharacter цвет одежды персонажа.
-//! @param   x                  Наследуемая от drawCharacter координата X левого верхнего угла изображения.
-//! @param   y                  Наследуемая от drawCharacter координата Y левого верхнего угла изображения.
+//! @param   x                  Наследуемая от drawCharacter координата X начальной точки изображения.
+//! @param   y                  Наследуемая от drawCharacter координата Y начальной точки изображения.
 //! @param   size               Наследуемый от drawCharacter множитель размера персонажа относительно стандартного (300x177).
-void chenBody(COLORREF hairColor, COLORREF clothesColor, int x, int y, int size);
+//! @param   yMultiplierAbs     <b>(НОВОЕ)</b> Наследуемый от drawCharacter переключаемый параметр отражения Y оси при отрицательном значении size.
+void chenBody(COLORREF hairColor, COLORREF clothesColor, int x, int y, double size, bool yMultiplierAbs);
 
 /*!
     @ingroup Local
@@ -978,10 +992,11 @@ void chenBody(COLORREF hairColor, COLORREF clothesColor, int x, int y, int size)
 */
 //! @param   hairColor          Наследуемый от drawCharacter цвет волос персонажа.
 //! @param   clothesColor       Наследуемый от drawCharacter цвет одежды персонажа.
-//! @param   x                  Наследуемая от drawCharacter координата X левого верхнего угла изображения.
-//! @param   y                  Наследуемая от drawCharacter координата Y левого верхнего угла изображения.
+//! @param   x                  Наследуемая от drawCharacter координата X начальной точки изображения.
+//! @param   y                  Наследуемая от drawCharacter координата Y начальной точки изображения.
 //! @param   size               Наследуемый от drawCharacter множитель размера персонажа относительно стандартного (300x177).
-void cirnoBody(COLORREF hairColor, COLORREF clothesColor, int x, int y, int size);
+//! @param   yMultiplierAbs     <b>(НОВОЕ)</b> Наследуемый от drawCharacter переключаемый параметр отражения Y оси при отрицательном значении size.
+void cirnoBody(COLORREF hairColor, COLORREF clothesColor, int x, int y, double size, bool yMultiplierAbs);
 
 /*!
     @ingroup Local
@@ -992,9 +1007,6 @@ void cirnoBody(COLORREF hairColor, COLORREF clothesColor, int x, int y, int size
 */
 //! @param   hairColor          Наследуемый от drawCharacter цвет волос персонажа.
 //! @param   clothesColor       Наследуемый от drawCharacter цвет одежды персонажа.
-//! @param   x                  Наследуемая от drawCharacter координата X левого верхнего угла изображения.
-//! @param   y                  Наследуемая от drawCharacter координата Y левого верхнего угла изображения.
-//! @param   size               Наследуемый от drawCharacter множитель размера персонажа относительно стандартного (300x177).
 void nazrinBody(COLORREF hairColor, COLORREF clothesColor);
 
 /*!
@@ -1006,10 +1018,11 @@ void nazrinBody(COLORREF hairColor, COLORREF clothesColor);
 */
 //! @param   hairColor          Наследуемый от drawCharacter цвет волос персонажа.
 //! @param   clothesColor       Наследуемый от drawCharacter цвет одежды персонажа.
-//! @param   x                  Наследуемая от drawCharacter координата X левого верхнего угла изображения.
-//! @param   y                  Наследуемая от drawCharacter координата Y левого верхнего угла изображения.
+//! @param   x                  Наследуемая от drawCharacter координата X начальной точки изображения.
+//! @param   y                  Наследуемая от drawCharacter координата Y начальной точки изображения.
 //! @param   size               Наследуемый от drawCharacter множитель размера персонажа относительно стандартного (300x177).
-void rumiaBody(COLORREF hairColor, COLORREF clothesColor, int x, int y, int size);
+//! @param   yMultiplierAbs     <b>(НОВОЕ)</b> Наследуемый от drawCharacter переключаемый параметр отражения Y оси при отрицательном значении size.
+void rumiaBody(COLORREF hairColor, COLORREF clothesColor, int x, int y, double size, bool yMultiplierAbs);
 
 /*!
     @ingroup Local
@@ -1024,7 +1037,7 @@ void drawEyes(bool eyesClosed, COLORREF eyesColor);
 
 void clearScreen(COLORREF fillColor, COLORREF brushColor) {
     txSetFillColor(fillColor);
-    txSetColor(RGB (brushColor);
+    txSetColor(brushColor);
     txClear();
 }
 
@@ -1032,7 +1045,7 @@ void drawCharacter(
     string characterName,
     int x,
     int y,
-    int size,
+    double size,
     bool accessoiresAreVisible,
     bool eyesClosed,
     bool mouthOpened,
@@ -1040,13 +1053,14 @@ void drawCharacter(
     bool blushVisible,
     COLORREF hairColor,
     COLORREF clothesColor,
-    COLORREF eyesColor
+    COLORREF eyesColor,
+    bool yMultiplierAbs
     ) {
     int characterNum = 0;
     txSetFillColor(RGB (255, 255, 255));
     txSetColor(RGB (0, 0, 0));
 
-    replaceAndResizeCharacter(x, y, size);
+    replaceAndResizeCharacter(x, y, size, yMultiplierAbs);
     if (characterName == "Satori") characterNum = 0;
     if (characterName == "Marisa") characterNum = 1;
     if (characterName == "Chen") characterNum = 2;
@@ -1059,25 +1073,25 @@ void drawCharacter(
             if (hairColor == 0) hairColor = RGB (255, 214, 253);
             if (clothesColor == 0) clothesColor = RGB (202, 255, 252);
             if (eyesColor == 0) eyesColor = RGB (189, 109, 255);
-            satoriBody(hairColor, clothesColor, x, y, size);
+            satoriBody(hairColor, clothesColor, x, y, size, yMultiplierAbs);
             break;
         case 1:
             if (hairColor == 0) hairColor = RGB (253, 223, 11);
             if (clothesColor == 0) clothesColor = RGB (83, 86, 86);
             if (eyesColor == 0) eyesColor = RGB (255, 201, 14);
-            marisaBody(hairColor, clothesColor, x, y, size);
+            marisaBody(hairColor, clothesColor, x, y, size, yMultiplierAbs);
             break;
         case 2:
             if (hairColor == 0) hairColor = RGB (137, 59, 0);
             if (clothesColor == 0) clothesColor = RGB (255, 14, 0);
             if (eyesColor == 0) eyesColor = RGB (80, 22, 0);
-            chenBody(hairColor, clothesColor, x, y, size);
+            chenBody(hairColor, clothesColor, x, y, size, yMultiplierAbs);
             break;
         case 3:
             if (hairColor == 0) hairColor = RGB (143, 234, 244);
             if (clothesColor == 0) clothesColor = RGB (130, 153, 225);
             if (eyesColor == 0) eyesColor = RGB (95, 224, 239);
-            cirnoBody(hairColor, clothesColor, x, y, size);
+            cirnoBody(hairColor, clothesColor, x, y, size, yMultiplierAbs);
             break;
         case 4:
             if (hairColor == 0) hairColor = RGB (166, 153, 149);
@@ -1089,7 +1103,7 @@ void drawCharacter(
             if (hairColor == 0) hairColor = RGB (253, 180, 32);
             if (clothesColor == 0) clothesColor = RGB (68, 45, 48);
             if (eyesColor == 0) eyesColor = RGB (255, 13, 34);
-            rumiaBody(hairColor, clothesColor, x, y, size);
+            rumiaBody(hairColor, clothesColor, x, y, size, yMultiplierAbs);
             break;
         default:
             break;
@@ -1097,7 +1111,7 @@ void drawCharacter(
 
     drawEyes(eyesClosed, eyesColor);
 
-    txSetPixel((x+167)*size, (y+105)*size, RGB (0, 0, 0));
+    txSetPixel(x+(167*size), y+(105*((yMultiplierAbs)?size:abs(size))), RGB (0, 0, 0));
 
     if (blushVisible) {
         txSetFillColor(RGB (255, 206, 187));
@@ -1115,18 +1129,18 @@ void drawCharacter(
         txPolygon(rightToothT, 3);
     }
     else {
-        txLine((x+155)*size, (y+123)*size, (x+157)*size, (y+125)*size);
-        txLine((x+157)*size, (y+125)*size, (x+158)*size, (y+130)*size);
-        txLine((x+158)*size, (y+130)*size, (x+156)*size, (y+132)*size);
-        txLine((x+158)*size, (y+127)*size, (x+164)*size, (y+127)*size);
-        txLine((x+164)*size, (y+127)*size, (x+168)*size, (y+126)*size);
-        txLine((x+168)*size, (y+126)*size, (x+169)*size, (y+124)*size);
+        txLine(x+(155*size), y+(123*((yMultiplierAbs)?size:abs(size))), x+(157*size), y+(125*((yMultiplierAbs)?size:abs(size))));
+        txLine(x+(157*size), y+(125*((yMultiplierAbs)?size:abs(size))), x+(158*size), y+(130*((yMultiplierAbs)?size:abs(size))));
+        txLine(x+(158*size), y+(130*((yMultiplierAbs)?size:abs(size))), x+(156*size), y+(132*((yMultiplierAbs)?size:abs(size))));
+        txLine(x+(158*size), y+(127*((yMultiplierAbs)?size:abs(size))), x+(164*size), y+(127*((yMultiplierAbs)?size:abs(size))));
+        txLine(x+(164*size), y+(127*((yMultiplierAbs)?size:abs(size))), x+(168*size), y+(126*((yMultiplierAbs)?size:abs(size))));
+        txLine(x+(168*size), y+(126*((yMultiplierAbs)?size:abs(size))), x+(169*size), y+(124*((yMultiplierAbs)?size:abs(size))));
     }
 
     if (eyebrowVisible) {
         txSetColor(RGB (47, 47, 47), 1);
-        txLine((x+107)*size, (y+55)*size, (x+139)*size, (y+75)*size);
-        txLine((x+196)*size, (y+47)*size, (x+168)*size, (y+75)*size);
+        txLine(x+(107*size), y+(55*((yMultiplierAbs)?size:abs(size))), x+(139*size), y+(75*((yMultiplierAbs)?size:abs(size))));
+        txLine(x+(196*size), y+(47*((yMultiplierAbs)?size:abs(size))), x+(168*size), y+(75*((yMultiplierAbs)?size:abs(size))));
     }
     txSetColor(RGB (0, 0, 0));
 
@@ -1134,52 +1148,52 @@ void drawCharacter(
         switch (characterNum) {
             case 0:
                 txSetColor(RGB (172, 138, 140), 2);
-                txLine((x+56)*size, (y+177)*size, (x+56)*size, (y+166)*size);
-                txLine((x+56)*size, (y+166)*size, (x+58)*size, (y+159)*size);
-                txLine((x+58)*size, (y+159)*size, (x+62)*size, (y+156)*size);
-                txLine((x+56)*size, (y+92)*size, (x+47)*size, (y+88)*size);
-                txLine((x+47)*size, (y+88)*size, (x+41)*size, (y+82)*size);
-                txLine((x+41)*size, (y+82)*size, (x+34)*size, (y+62)*size);
-                txLine((x+34)*size, (y+62)*size, (x+33)*size, (y+47)*size);
-                txLine((x+33)*size, (y+47)*size, (x+37)*size, (y+33)*size);
-                txLine((x+37)*size, (y+33)*size, (x+46)*size, (y+22)*size);
-                txLine((x+46)*size, (y+22)*size, (x+52)*size, (y+19)*size);
-                txLine((x+52)*size, (y+19)*size, (x+57)*size, (y+19)*size);
-                txLine((x+57)*size, (y+19)*size, (x+67)*size, (y+22)*size);
-                txLine((x+67)*size, (y+22)*size, (x+73)*size, (y+26)*size);
-                txLine((x+73)*size, (y+26)*size, (x+77)*size, (y+30)*size);
-                txLine((x+234)*size, (y+108)*size, (x+242)*size, (y+109)*size);
-                txLine((x+242)*size, (y+109)*size, (x+253)*size, (y+107)*size);
-                txLine((x+253)*size, (y+107)*size, (x+265)*size, (y+101)*size);
-                txLine((x+265)*size, (y+101)*size, (x+275)*size, (y+93)*size);
-                txLine((x+275)*size, (y+93)*size, (x+288)*size, (y+71)*size);
-                txLine((x+288)*size, (y+71)*size, (x+290)*size, (y+59)*size);
-                txLine((x+290)*size, (y+59)*size, (x+287)*size, (y+53)*size);
-                txLine((x+287)*size, (y+53)*size, (x+280)*size, (y+50)*size);
-                txLine((x+280)*size, (y+50)*size, (x+274)*size, (y+52)*size);
-                txLine((x+274)*size, (y+52)*size, (x+270)*size, (y+57)*size);
-                txLine((x+270)*size, (y+57)*size, (x+270)*size, (y+50)*size);
-                txLine((x+270)*size, (y+50)*size, (x+265)*size, (y+46)*size);
-                txLine((x+265)*size, (y+46)*size, (x+257)*size, (y+46)*size);
-                txLine((x+257)*size, (y+46)*size, (x+250)*size, (y+54)*size);
-                txLine((x+250)*size, (y+54)*size, (x+248)*size, (y+64)*size);
-                txLine((x+248)*size, (y+64)*size, (x+248)*size, (y+76)*size);
-                txLine((x+248)*size, (y+76)*size, (x+252)*size, (y+90)*size);
-                txLine((x+252)*size, (y+90)*size, (x+257)*size, (y+100)*size);
-                txLine((x+257)*size, (y+100)*size, (x+266)*size, (y+116)*size);
-                txLine((x+266)*size, (y+116)*size, (x+274)*size, (y+123)*size);
-                txLine((x+274)*size, (y+123)*size, (x+278)*size, (y+128)*size);
-                txLine((x+278)*size, (y+128)*size, (x+279)*size, (y+132)*size);
-                txLine((x+218)*size, (y+177)*size, (x+227)*size, (y+162)*size);
-                txLine((x+227)*size, (y+162)*size, (x+236)*size, (y+150)*size);
-                txLine((x+236)*size, (y+150)*size, (x+242)*size, (y+143)*size);
-                txLine((x+242)*size, (y+143)*size, (x+244)*size, (y+142)*size);
-                txLine((x+229)*size, (y+177)*size, (x+238)*size, (y+165)*size);
-                txLine((x+238)*size, (y+165)*size, (x+243)*size, (y+161)*size);
-                txLine((x+243)*size, (y+161)*size, (x+246)*size, (y+160)*size);
-                txLine((x+263)*size, (y+177)*size, (x+264)*size, (y+174)*size);
-                txLine((x+290)*size, (y+176)*size, (x+287)*size, (y+167)*size);
-                txLine((x+287)*size, (y+167)*size, (x+284)*size, (y+165)*size);
+                txLine(x+(56*size), y+(177*((yMultiplierAbs)?size:abs(size))), x+(56*size), y+(166*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(56*size), y+(166*((yMultiplierAbs)?size:abs(size))), x+(58*size), y+(159*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(58*size), y+(159*((yMultiplierAbs)?size:abs(size))), x+(62*size), y+(156*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(56*size), y+(92*((yMultiplierAbs)?size:abs(size))), x+(47*size), y+(88*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(47*size), y+(88*((yMultiplierAbs)?size:abs(size))), x+(41*size), y+(82*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(41*size), y+(82*((yMultiplierAbs)?size:abs(size))), x+(34*size), y+(62*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(34*size), y+(62*((yMultiplierAbs)?size:abs(size))), x+(33*size), y+(47*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(33*size), y+(47*((yMultiplierAbs)?size:abs(size))), x+(37*size), y+(33*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(37*size), y+(33*((yMultiplierAbs)?size:abs(size))), x+(46*size), y+(22*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(46*size), y+(22*((yMultiplierAbs)?size:abs(size))), x+(52*size), y+(19*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(52*size), y+(19*((yMultiplierAbs)?size:abs(size))), x+(57*size), y+(19*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(57*size), y+(19*((yMultiplierAbs)?size:abs(size))), x+(67*size), y+(22*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(67*size), y+(22*((yMultiplierAbs)?size:abs(size))), x+(73*size), y+(26*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(73*size), y+(26*((yMultiplierAbs)?size:abs(size))), x+(77*size), y+(30*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(234*size), y+(108*((yMultiplierAbs)?size:abs(size))), x+(242*size), y+(109*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(242*size), y+(109*((yMultiplierAbs)?size:abs(size))), x+(253*size), y+(107*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(253*size), y+(107*((yMultiplierAbs)?size:abs(size))), x+(265*size), y+(101*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(265*size), y+(101*((yMultiplierAbs)?size:abs(size))), x+(275*size), y+(93*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(275*size), y+(93*((yMultiplierAbs)?size:abs(size))), x+(288*size), y+(71*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(288*size), y+(71*((yMultiplierAbs)?size:abs(size))), x+(290*size), y+(59*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(290*size), y+(59*((yMultiplierAbs)?size:abs(size))), x+(287*size), y+(53*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(287*size), y+(53*((yMultiplierAbs)?size:abs(size))), x+(280*size), y+(50*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(280*size), y+(50*((yMultiplierAbs)?size:abs(size))), x+(274*size), y+(52*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(274*size), y+(52*((yMultiplierAbs)?size:abs(size))), x+(270*size), y+(57*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(270*size), y+(57*((yMultiplierAbs)?size:abs(size))), x+(270*size), y+(50*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(270*size), y+(50*((yMultiplierAbs)?size:abs(size))), x+(265*size), y+(46*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(265*size), y+(46*((yMultiplierAbs)?size:abs(size))), x+(257*size), y+(46*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(257*size), y+(46*((yMultiplierAbs)?size:abs(size))), x+(250*size), y+(54*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(250*size), y+(54*((yMultiplierAbs)?size:abs(size))), x+(248*size), y+(64*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(248*size), y+(64*((yMultiplierAbs)?size:abs(size))), x+(248*size), y+(76*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(248*size), y+(76*((yMultiplierAbs)?size:abs(size))), x+(252*size), y+(90*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(252*size), y+(90*((yMultiplierAbs)?size:abs(size))), x+(257*size), y+(100*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(257*size), y+(100*((yMultiplierAbs)?size:abs(size))), x+(266*size), y+(116*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(266*size), y+(116*((yMultiplierAbs)?size:abs(size))), x+(274*size), y+(123*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(274*size), y+(123*((yMultiplierAbs)?size:abs(size))), x+(278*size), y+(128*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(278*size), y+(128*((yMultiplierAbs)?size:abs(size))), x+(279*size), y+(132*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(218*size), y+(177*((yMultiplierAbs)?size:abs(size))), x+(227*size), y+(162*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(227*size), y+(162*((yMultiplierAbs)?size:abs(size))), x+(236*size), y+(150*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(236*size), y+(150*((yMultiplierAbs)?size:abs(size))), x+(242*size), y+(143*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(242*size), y+(143*((yMultiplierAbs)?size:abs(size))), x+(244*size), y+(142*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(229*size), y+(177*((yMultiplierAbs)?size:abs(size))), x+(238*size), y+(165*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(238*size), y+(165*((yMultiplierAbs)?size:abs(size))), x+(243*size), y+(161*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(243*size), y+(161*((yMultiplierAbs)?size:abs(size))), x+(246*size), y+(160*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(263*size), y+(177*((yMultiplierAbs)?size:abs(size))), x+(264*size), y+(174*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(290*size), y+(176*((yMultiplierAbs)?size:abs(size))), x+(287*size), y+(167*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(287*size), y+(167*((yMultiplierAbs)?size:abs(size))), x+(284*size), y+(165*((yMultiplierAbs)?size:abs(size))));
                 txSetColor(RGB (172, 138, 140), 1);
                 txSetFillColor(RGB (255, 255, 1));
                 txPolygon(yellowHeartT, 16);
@@ -1196,82 +1210,82 @@ void drawCharacter(
                 txPolygon(marisaHatT, 71);
                 txSetFillColor(RGB (232, 243, 255));
                 txPolygon(marisaBowT, 71);
-                txLine((x+69)*size, (y+81)*size, (x+65)*size, (y+76)*size);
-                txLine((x+65)*size, (y+76)*size, (x+68)*size, (y+74)*size);
-                txLine((x+68)*size, (y+66)*size, (x+63)*size, (y+58)*size);
-                txLine((x+77)*size, (y+53)*size, (x+86)*size, (y+53)*size);
-                txLine((x+86)*size, (y+53)*size, (x+91)*size, (y+50)*size);
-                txLine((x+91)*size, (y+50)*size, (x+94)*size, (y+52)*size);
-                txLine((x+91)*size, (y+50)*size, (x+89)*size, (y+47)*size);
-                txLine((x+89)*size, (y+47)*size, (x+94)*size, (y+40)*size);
-                txLine((x+94)*size, (y+40)*size, (x+103)*size, (y+32)*size);
-                txLine((x+103)*size, (y+32)*size, (x+110)*size, (y+29)*size);
-                txLine((x+110)*size, (y+29)*size, (x+111)*size, (y+36)*size);
-                txLine((x+110)*size, (y+29)*size, (x+126)*size, (y+30)*size);
-                txLine((x+126)*size, (y+30)*size, (x+134)*size, (y+28)*size);
-                txLine((x+134)*size, (y+28)*size, (x+134)*size, (y+31)*size);
-                txLine((x+134)*size, (y+28)*size, (x+135)*size, (y+23)*size);
-                txLine((x+135)*size, (y+23)*size, (x+133)*size, (y+20)*size);
-                txLine((x+133)*size, (y+20)*size, (x+131)*size, (y+24)*size);
-                txLine((x+131)*size, (y+24)*size, (x+104)*size, (y+20)*size);
-                txLine((x+133)*size, (y+20)*size, (x+129)*size, (y+16)*size);
-                txLine((x+129)*size, (y+16)*size, (x+130)*size, (y+12)*size);
-                txLine((x+135)*size, (y+23)*size, (x+140)*size, (y+21)*size);
-                txLine((x+140)*size, (y+21)*size, (x+140)*size, (y+13)*size);
-                txLine((x+140)*size, (y+21)*size, (x+145)*size, (y+20)*size);
-                txLine((x+145)*size, (y+20)*size, (x+144)*size, (y+15)*size);
-                txLine((x+144)*size, (y+15)*size, (x+141)*size, (y+13)*size);
-                txLine((x+145)*size, (y+20)*size, (x+153)*size, (y+17)*size);
-                txLine((x+153)*size, (y+17)*size, (x+152)*size, (y+9)*size);
-                txLine((x+153)*size, (y+17)*size, (x+166)*size, (y+13)*size);
-                txLine((x+166)*size, (y+13)*size, (x+176)*size, (y+12)*size);
-                txLine((x+153)*size, (y+17)*size, (x+167)*size, (y+17)*size);
-                txLine((x+167)*size, (y+17)*size, (x+167)*size, (y+26)*size);
-                txLine((x+167)*size, (y+23)*size, (x+173)*size, (y+25)*size);
-                txLine((x+173)*size, (y+25)*size, (x+193)*size, (y+18)*size);
-                txLine((x+193)*size, (y+18)*size, (x+194)*size, (y+22)*size);
-                txLine((x+194)*size, (y+22)*size, (x+193)*size, (y+25)*size);
-                txLine((x+193)*size, (y+18)*size, (x+203)*size, (y+20)*size);
-                txLine((x+203)*size, (y+20)*size, (x+214)*size, (y+23)*size);
-                txLine((x+214)*size, (y+23)*size, (x+215)*size, (y+27)*size);
-                txLine((x+215)*size, (y+27)*size, (x+215)*size, (y+30)*size);
-                txLine((x+215)*size, (y+30)*size, (x+214)*size, (y+35)*size);
-                txLine((x+215)*size, (y+30)*size, (x+222)*size, (y+32)*size);
-                txLine((x+224)*size, (y+41)*size, (x+231)*size, (y+34)*size);
-                txLine((x+228)*size, (y+48)*size, (x+231)*size, (y+46)*size);
-                txLine((x+230)*size, (y+53)*size, (x+235)*size, (y+52)*size);
+                txLine(x+(69*size), y+(81*((yMultiplierAbs)?size:abs(size))), x+(65*size), y+(76*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(65*size), y+(76*((yMultiplierAbs)?size:abs(size))), x+(68*size), y+(74*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(68*size), y+(66*((yMultiplierAbs)?size:abs(size))), x+(63*size), y+(58*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(77*size), y+(53*((yMultiplierAbs)?size:abs(size))), x+(86*size), y+(53*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(86*size), y+(53*((yMultiplierAbs)?size:abs(size))), x+(91*size), y+(50*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(91*size), y+(50*((yMultiplierAbs)?size:abs(size))), x+(94*size), y+(52*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(91*size), y+(50*((yMultiplierAbs)?size:abs(size))), x+(89*size), y+(47*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(89*size), y+(47*((yMultiplierAbs)?size:abs(size))), x+(94*size), y+(40*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(94*size), y+(40*((yMultiplierAbs)?size:abs(size))), x+(103*size), y+(32*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(103*size), y+(32*((yMultiplierAbs)?size:abs(size))), x+(110*size), y+(29*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(110*size), y+(29*((yMultiplierAbs)?size:abs(size))), x+(111*size), y+(36*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(110*size), y+(29*((yMultiplierAbs)?size:abs(size))), x+(126*size), y+(30*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(126*size), y+(30*((yMultiplierAbs)?size:abs(size))), x+(134*size), y+(28*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(134*size), y+(28*((yMultiplierAbs)?size:abs(size))), x+(134*size), y+(31*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(134*size), y+(28*((yMultiplierAbs)?size:abs(size))), x+(135*size), y+(23*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(135*size), y+(23*((yMultiplierAbs)?size:abs(size))), x+(133*size), y+(20*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(133*size), y+(20*((yMultiplierAbs)?size:abs(size))), x+(131*size), y+(24*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(131*size), y+(24*((yMultiplierAbs)?size:abs(size))), x+(104*size), y+(20*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(133*size), y+(20*((yMultiplierAbs)?size:abs(size))), x+(129*size), y+(16*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(129*size), y+(16*((yMultiplierAbs)?size:abs(size))), x+(130*size), y+(12*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(135*size), y+(23*((yMultiplierAbs)?size:abs(size))), x+(140*size), y+(21*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(140*size), y+(21*((yMultiplierAbs)?size:abs(size))), x+(140*size), y+(13*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(140*size), y+(21*((yMultiplierAbs)?size:abs(size))), x+(145*size), y+(20*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(145*size), y+(20*((yMultiplierAbs)?size:abs(size))), x+(144*size), y+(15*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(144*size), y+(15*((yMultiplierAbs)?size:abs(size))), x+(141*size), y+(13*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(145*size), y+(20*((yMultiplierAbs)?size:abs(size))), x+(153*size), y+(17*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(153*size), y+(17*((yMultiplierAbs)?size:abs(size))), x+(152*size), y+(9*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(153*size), y+(17*((yMultiplierAbs)?size:abs(size))), x+(166*size), y+(13*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(166*size), y+(13*((yMultiplierAbs)?size:abs(size))), x+(176*size), y+(12*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(153*size), y+(17*((yMultiplierAbs)?size:abs(size))), x+(167*size), y+(17*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(167*size), y+(17*((yMultiplierAbs)?size:abs(size))), x+(167*size), y+(26*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(167*size), y+(23*((yMultiplierAbs)?size:abs(size))), x+(173*size), y+(25*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(173*size), y+(25*((yMultiplierAbs)?size:abs(size))), x+(193*size), y+(18*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(193*size), y+(18*((yMultiplierAbs)?size:abs(size))), x+(194*size), y+(22*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(194*size), y+(22*((yMultiplierAbs)?size:abs(size))), x+(193*size), y+(25*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(193*size), y+(18*((yMultiplierAbs)?size:abs(size))), x+(203*size), y+(20*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(203*size), y+(20*((yMultiplierAbs)?size:abs(size))), x+(214*size), y+(23*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(214*size), y+(23*((yMultiplierAbs)?size:abs(size))), x+(215*size), y+(27*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(215*size), y+(27*((yMultiplierAbs)?size:abs(size))), x+(215*size), y+(30*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(215*size), y+(30*((yMultiplierAbs)?size:abs(size))), x+(214*size), y+(35*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(215*size), y+(30*((yMultiplierAbs)?size:abs(size))), x+(222*size), y+(32*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(224*size), y+(41*((yMultiplierAbs)?size:abs(size))), x+(231*size), y+(34*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(228*size), y+(48*((yMultiplierAbs)?size:abs(size))), x+(231*size), y+(46*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(230*size), y+(53*((yMultiplierAbs)?size:abs(size))), x+(235*size), y+(52*((yMultiplierAbs)?size:abs(size))));
                 break;
             case 2:
                 txSetFillColor(RGB (0, 142, 0));
                 txPolygon(chenHatLittlePieceT, 13);
                 txPolygon(chenHatT, 32);
-                txLine((x+210)*size, (y+18)*size, (x+204)*size, (y+18)*size);
-                txLine((x+204)*size, (y+18)*size, (x+196)*size, (y+17)*size);
-                txLine((x+196)*size, (y+17)*size, (x+190)*size, (y+12)*size);
-                txLine((x+190)*size, (y+12)*size, (x+184)*size, (y+12)*size);
-                txLine((x+184)*size, (y+12)*size, (x+169)*size, (y+20)*size);
-                txLine((x+169)*size, (y+20)*size, (x+164)*size, (y+21)*size);
-                txLine((x+164)*size, (y+21)*size, (x+160)*size, (y+21)*size);
-                txLine((x+160)*size, (y+21)*size, (x+152)*size, (y+15)*size);
-                txLine((x+152)*size, (y+15)*size, (x+147)*size, (y+14)*size);
-                txLine((x+147)*size, (y+14)*size, (x+138)*size, (y+25)*size);
-                txLine((x+138)*size, (y+25)*size, (x+129)*size, (y+30)*size);
-                txLine((x+129)*size, (y+30)*size, (x+123)*size, (y+29)*size);
-                txLine((x+123)*size, (y+29)*size, (x+117)*size, (y+25)*size);
-                txLine((x+117)*size, (y+25)*size, (x+115)*size, (y+25)*size);
-                txLine((x+115)*size, (y+25)*size, (x+113)*size, (y+27)*size);
-                txLine((x+210)*size, (y+18)*size, (x+206)*size, (y+22)*size);
-                txLine((x+196)*size, (y+17)*size, (x+197)*size, (y+20)*size);
-                txLine((x+197)*size, (y+20)*size, (x+200)*size, (y+22)*size);
-                txLine((x+184)*size, (y+12)*size, (x+171)*size, (y+23)*size);
-                txLine((x+160)*size, (y+21)*size, (x+166)*size, (y+26)*size);
+                txLine(x+(210*size), y+(18*((yMultiplierAbs)?size:abs(size))), x+(204*size), y+(18*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(204*size), y+(18*((yMultiplierAbs)?size:abs(size))), x+(196*size), y+(17*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(196*size), y+(17*((yMultiplierAbs)?size:abs(size))), x+(190*size), y+(12*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(190*size), y+(12*((yMultiplierAbs)?size:abs(size))), x+(184*size), y+(12*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(184*size), y+(12*((yMultiplierAbs)?size:abs(size))), x+(169*size), y+(20*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(169*size), y+(20*((yMultiplierAbs)?size:abs(size))), x+(164*size), y+(21*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(164*size), y+(21*((yMultiplierAbs)?size:abs(size))), x+(160*size), y+(21*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(160*size), y+(21*((yMultiplierAbs)?size:abs(size))), x+(152*size), y+(15*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(152*size), y+(15*((yMultiplierAbs)?size:abs(size))), x+(147*size), y+(14*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(147*size), y+(14*((yMultiplierAbs)?size:abs(size))), x+(138*size), y+(25*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(138*size), y+(25*((yMultiplierAbs)?size:abs(size))), x+(129*size), y+(30*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(129*size), y+(30*((yMultiplierAbs)?size:abs(size))), x+(123*size), y+(29*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(123*size), y+(29*((yMultiplierAbs)?size:abs(size))), x+(117*size), y+(25*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(117*size), y+(25*((yMultiplierAbs)?size:abs(size))), x+(115*size), y+(25*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(115*size), y+(25*((yMultiplierAbs)?size:abs(size))), x+(113*size), y+(27*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(210*size), y+(18*((yMultiplierAbs)?size:abs(size))), x+(206*size), y+(22*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(196*size), y+(17*((yMultiplierAbs)?size:abs(size))), x+(197*size), y+(20*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(197*size), y+(20*((yMultiplierAbs)?size:abs(size))), x+(200*size), y+(22*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(184*size), y+(12*((yMultiplierAbs)?size:abs(size))), x+(171*size), y+(23*((yMultiplierAbs)?size:abs(size))));
+                txLine(x+(160*size), y+(21*((yMultiplierAbs)?size:abs(size))), x+(166*size), y+(26*((yMultiplierAbs)?size:abs(size))));
                 break;
             case 3:
                 txSetFillColor(clothesColor);
                 txPolygon(cirnoHat1T, 17);
                 txPolygon(cirnoHat2T, 9);
                 txPolygon(cirnoHat3T, 5);
-                txLine((x+78)*size, (y+37)*size, (x+79)*size, (y+42)*size);
+                txLine(x+(78*size), y+(37*((yMultiplierAbs)?size:abs(size))), x+(79*size), y+(42*((yMultiplierAbs)?size:abs(size))));
 
                 txSetFillColor(RGB (198, 243, 254));
                 txPolygon(cirnoIce1T, 6);
@@ -1293,360 +1307,242 @@ void drawCharacter(
     }
 }
 
-void replaceAndResizeCharacter(int x, int y, int size) {
+void replaceAndResizeCharacter(int x, int y, double size, bool yMultiplierAbs) {
     for (int count = 0; count < 63; count++) {
-        satoriProfileT[count].x = satoriProfile[count].x + x;
-        satoriProfileT[count].y = satoriProfile[count].y + y;
-        satoriProfileT[count].x *= size;
-        satoriProfileT[count].y *= size;
+        satoriProfileT[count].x = (long)(x + ((double)satoriProfile[count].x * size));
+        satoriProfileT[count].y = (long)(y + ((double)satoriProfile[count].y * ((yMultiplierAbs)?size:abs(size))));
     }
     for (int count = 0; count < 68; count++) {
-        faceShapeT[count].x = faceShape[count].x + x;
-        faceShapeT[count].y = faceShape[count].y + y;
-        faceShapeT[count].x *= size;
-        faceShapeT[count].y *= size;
+        faceShapeT[count].x = (long)(x + ((double)faceShape[count].x * size));
+        faceShapeT[count].y = (long)(y + ((double)faceShape[count].y * ((yMultiplierAbs)?size:abs(size))));
     }
     for (int count = 0; count < 21; count++) {
-        satoriClothesT[count].x = satoriClothes[count].x + x;
-        satoriClothesT[count].y = satoriClothes[count].y + y;
-        satoriClothesT[count].x *= size;
-        satoriClothesT[count].y *= size;
+        satoriClothesT[count].x = (long)(x + ((double)satoriClothes[count].x * size));
+        satoriClothesT[count].y = (long)(y + ((double)satoriClothes[count].y * ((yMultiplierAbs)?size:abs(size))));
     }
     for (int count = 0; count < 27; count++) {
-        collarT[count].x = collar[count].x + x;
-        collarT[count].y = collar[count].y + y;
-        collarT[count].x *= size;
-        collarT[count].y *= size;
+        collarT[count].x = (long)(x + ((double)collar[count].x * size));
+        collarT[count].y = (long)(y + ((double)collar[count].y * ((yMultiplierAbs)?size:abs(size))));
     }
     for (int count = 0; count < 8; count++) {
-        collarLines1T[count].x = collarLines1[count].x + x;
-        collarLines1T[count].y = collarLines1[count].y + y;
-        collarLines1T[count].x *= size;
-        collarLines1T[count].y *= size;
+        collarLines1T[count].x = (long)(x + ((double)collarLines1[count].x * size));
+        collarLines1T[count].y = (long)(y + ((double)collarLines1[count].y * ((yMultiplierAbs)?size:abs(size))));
     }
     for (int count = 0; count < 8; count++) {
-        collarLines2T[count].x = collarLines2[count].x + x;
-        collarLines2T[count].y = collarLines2[count].y + y;
-        collarLines2T[count].x *= size;
-        collarLines2T[count].y *= size;
+        collarLines2T[count].x = (long)(x + ((double)collarLines2[count].x * size));
+        collarLines2T[count].y = (long)(y + ((double)collarLines2[count].y * ((yMultiplierAbs)?size:abs(size))));
     }
     for (int count = 0; count < 11; count++) {
-        leftEyeOpenedT[count].x = leftEyeOpened[count].x + x;
-        leftEyeOpenedT[count].y = leftEyeOpened[count].y + y;
-        leftEyeOpenedT[count].x *= size;
-        leftEyeOpenedT[count].y *= size;
+        leftEyeOpenedT[count].x = (long)(x + ((double)leftEyeOpened[count].x * size));
+        leftEyeOpenedT[count].y = (long)(y + ((double)leftEyeOpened[count].y * ((yMultiplierAbs)?size:abs(size))));
     }
     for (int count = 0; count < 15; count++) {
-        leftEyebrowT[count].x = leftEyebrow[count].x + x;
-        leftEyebrowT[count].y = leftEyebrow[count].y + y;
-        leftEyebrowT[count].x *= size;
-        leftEyebrowT[count].y *= size;
+        leftEyebrowT[count].x = (long)(x + ((double)leftEyebrow[count].x * size));
+        leftEyebrowT[count].y = (long)(y + ((double)leftEyebrow[count].y * ((yMultiplierAbs)?size:abs(size))));
     }
     for (int count = 0; count < 11; count++) {
-        rightEyeOpenedT[count].x = rightEyeOpened[count].x + x;
-        rightEyeOpenedT[count].y = rightEyeOpened[count].y + y;
-        rightEyeOpenedT[count].x *= size;
-        rightEyeOpenedT[count].y *= size;
+        rightEyeOpenedT[count].x = (long)(x + ((double)rightEyeOpened[count].x * size));
+        rightEyeOpenedT[count].y = (long)(y + ((double)rightEyeOpened[count].y * ((yMultiplierAbs)?size:abs(size))));
     }
     for (int count = 0; count < 15; count++) {
-        rightEyebrowT[count].x = rightEyebrow[count].x + x;
-        rightEyebrowT[count].y = rightEyebrow[count].y + y;
-        rightEyebrowT[count].x *= size;
-        rightEyebrowT[count].y *= size;
+        rightEyebrowT[count].x = (long)(x + ((double)rightEyebrow[count].x * size));
+        rightEyebrowT[count].y = (long)(y + ((double)rightEyebrow[count].y * ((yMultiplierAbs)?size:abs(size))));
     }
     for (int count = 0; count < 18; count++) {
-        leftPupilT[count].x = leftPupil[count].x + x;
-        leftPupilT[count].y = leftPupil[count].y + y;
-        leftPupilT[count].x *= size;
-        leftPupilT[count].y *= size;
+        leftPupilT[count].x = (long)(x + ((double)leftPupil[count].x * size));
+        leftPupilT[count].y = (long)(y + ((double)leftPupil[count].y * ((yMultiplierAbs)?size:abs(size))));
     }
     for (int count = 0; count < 16; count++) {
-        rightPupilT[count].x = rightPupil[count].x + x;
-        rightPupilT[count].y = rightPupil[count].y + y;
-        rightPupilT[count].x *= size;
-        rightPupilT[count].y *= size;
+        rightPupilT[count].x = (long)(x + ((double)rightPupil[count].x * size));
+        rightPupilT[count].y = (long)(y + ((double)rightPupil[count].y * ((yMultiplierAbs)?size:abs(size))));
     }
     for (int count = 0; count < 10; count++) {
-        leftBlushT[count].x = leftBlush[count].x + x;
-        leftBlushT[count].y = leftBlush[count].y + y;
-        leftBlushT[count].x *= size;
-        leftBlushT[count].y *= size;
+        leftBlushT[count].x = (long)(x + ((double)leftBlush[count].x * size));
+        leftBlushT[count].y = (long)(y + ((double)leftBlush[count].y * ((yMultiplierAbs)?size:abs(size))));
     }
     for (int count = 0; count < 10; count++) {
-        rightBlushT[count].x = rightBlush[count].x + x;
-        rightBlushT[count].y = rightBlush[count].y + y;
-        rightBlushT[count].x *= size;
-        rightBlushT[count].y *= size;
+        rightBlushT[count].x = (long)(x + ((double)rightBlush[count].x * size));
+        rightBlushT[count].y = (long)(y + ((double)rightBlush[count].y * ((yMultiplierAbs)?size:abs(size))));
     }
     for (int count = 0; count < 19; count++) {
-        mouthT[count].x = mouth[count].x + x;
-        mouthT[count].y = mouth[count].y + y;
-        mouthT[count].x *= size;
-        mouthT[count].y *= size;
+        mouthT[count].x = (long)(x + ((double)mouth[count].x * size));
+        mouthT[count].y = (long)(y + ((double)mouth[count].y * ((yMultiplierAbs)?size:abs(size))));
     }
     for (int count = 0; count < 3; count++) {
-        leftToothT[count].x = leftTooth[count].x + x;
-        leftToothT[count].y = leftTooth[count].y + y;
-        leftToothT[count].x *= size;
-        leftToothT[count].y *= size;
+        leftToothT[count].x = (long)(x + ((double)leftTooth[count].x * size));
+        leftToothT[count].y = (long)(y + ((double)leftTooth[count].y * ((yMultiplierAbs)?size:abs(size))));
     }
     for (int count = 0; count < 3; count++) {
-        rightToothT[count].x = rightTooth[count].x + x;
-        rightToothT[count].y = rightTooth[count].y + y;
-        rightToothT[count].x *= size;
-        rightToothT[count].y *= size;
+        rightToothT[count].x = (long)(x + ((double)rightTooth[count].x * size));
+        rightToothT[count].y = (long)(y + ((double)rightTooth[count].y * ((yMultiplierAbs)?size:abs(size))));
     }
     for (int count = 0; count < 16; count++) {
-        yellowHeartT[count].x = yellowHeart[count].x + x;
-        yellowHeartT[count].y = yellowHeart[count].y + y;
-        yellowHeartT[count].x *= size;
-        yellowHeartT[count].y *= size;
+        yellowHeartT[count].x = (long)(x + ((double)yellowHeart[count].x * size));
+        yellowHeartT[count].y = (long)(y + ((double)yellowHeart[count].y * ((yMultiplierAbs)?size:abs(size))));
     }
     for (int count = 0; count < 15; count++) {
-        floatingEyeT[count].x = floatingEye[count].x + x;
-        floatingEyeT[count].y = floatingEye[count].y + y;
-        floatingEyeT[count].x *= size;
-        floatingEyeT[count].y *= size;
+        floatingEyeT[count].x = (long)(x + ((double)floatingEye[count].x * size));
+        floatingEyeT[count].y = (long)(y + ((double)floatingEye[count].y * ((yMultiplierAbs)?size:abs(size))));
     }
     for (int count = 0; count < 15; count++) {
-        corneaT[count].x = cornea[count].x + x;
-        corneaT[count].y = cornea[count].y + y;
-        corneaT[count].x *= size;
-        corneaT[count].y *= size;
+        corneaT[count].x = (long)(x + ((double)cornea[count].x * size));
+        corneaT[count].y = (long)(y + ((double)cornea[count].y * ((yMultiplierAbs)?size:abs(size))));
     }
     for (int count = 0; count < 10; count++) {
-        floatingEyePupilT[count].x = floatingEyePupil[count].x + x;
-        floatingEyePupilT[count].y = floatingEyePupil[count].y + y;
-        floatingEyePupilT[count].x *= size;
-        floatingEyePupilT[count].y *= size;
+        floatingEyePupilT[count].x = (long)(x + ((double)floatingEyePupil[count].x * size));
+        floatingEyePupilT[count].y = (long)(y + ((double)floatingEyePupil[count].y * ((yMultiplierAbs)?size:abs(size))));
     }
     for (int count = 0; count < 13; count++) {
-        leftEyeClosedT[count].x = leftEyeClosed[count].x + x;
-        leftEyeClosedT[count].y = leftEyeClosed[count].y + y;
-        leftEyeClosedT[count].x *= size;
-        leftEyeClosedT[count].y *= size;
+        leftEyeClosedT[count].x = (long)(x + ((double)leftEyeClosed[count].x * size));
+        leftEyeClosedT[count].y = (long)(y + ((double)leftEyeClosed[count].y * ((yMultiplierAbs)?size:abs(size))));
     }
     for (int count = 0; count < 12; count++) {
-        rightEyeClosedT[count].x = rightEyeClosed[count].x + x;
-        rightEyeClosedT[count].y = rightEyeClosed[count].y + y;
-        rightEyeClosedT[count].x *= size;
-        rightEyeClosedT[count].y *= size;
+        rightEyeClosedT[count].x = (long)(x + ((double)rightEyeClosed[count].x * size));
+        rightEyeClosedT[count].y = (long)(y + ((double)rightEyeClosed[count].y * ((yMultiplierAbs)?size:abs(size))));
     }
     for (int count = 0; count < 74; count++) {
-        marisaProfileT[count].x = marisaProfile[count].x + x;
-        marisaProfileT[count].y = marisaProfile[count].y + y;
-        marisaProfileT[count].x *= size;
-        marisaProfileT[count].y *= size;
+        marisaProfileT[count].x = (long)(x + ((double)marisaProfile[count].x * size));
+        marisaProfileT[count].y = (long)(y + ((double)marisaProfile[count].y * ((yMultiplierAbs)?size:abs(size))));
     }
     for (int count = 0; count < 26; count++) {
-        marisaClothesT[count].x = marisaClothes[count].x + x;
-        marisaClothesT[count].y = marisaClothes[count].y + y;
-        marisaClothesT[count].x *= size;
-        marisaClothesT[count].y *= size;
+        marisaClothesT[count].x = (long)(x + ((double)marisaClothes[count].x * size));
+        marisaClothesT[count].y = (long)(y + ((double)marisaClothes[count].y * ((yMultiplierAbs)?size:abs(size))));
     }
     for (int count = 0; count < 4; count++) {
-        marisaSlings1T[count].x = marisaSlings1[count].x + x;
-        marisaSlings1T[count].y = marisaSlings1[count].y + y;
-        marisaSlings1T[count].x *= size;
-        marisaSlings1T[count].y *= size;
+        marisaSlings1T[count].x = (long)(x + ((double)marisaSlings1[count].x * size));
+        marisaSlings1T[count].y = (long)(y + ((double)marisaSlings1[count].y * ((yMultiplierAbs)?size:abs(size))));
     }
     for (int count = 0; count < 6; count++) {
-        marisaSlings2T[count].x = marisaSlings2[count].x + x;
-        marisaSlings2T[count].y = marisaSlings2[count].y + y;
-        marisaSlings2T[count].x *= size;
-        marisaSlings2T[count].y *= size;
+        marisaSlings2T[count].x = (long)(x + ((double)marisaSlings2[count].x * size));
+        marisaSlings2T[count].y = (long)(y + ((double)marisaSlings2[count].y * ((yMultiplierAbs)?size:abs(size))));
     }
     for (int count = 0; count < 71; count++) {
-        marisaHatT[count].x = marisaHat[count].x + x;
-        marisaHatT[count].y = marisaHat[count].y + y;
-        marisaHatT[count].x *= size;
-        marisaHatT[count].y *= size;
+        marisaHatT[count].x = (long)(x + ((double)marisaHat[count].x * size));
+        marisaHatT[count].y = (long)(y + ((double)marisaHat[count].y * ((yMultiplierAbs)?size:abs(size))));
     }
     for (int count = 0; count < 71; count++) {
-        marisaBowT[count].x = marisaBow[count].x + x;
-        marisaBowT[count].y = marisaBow[count].y + y;
-        marisaBowT[count].x *= size;
-        marisaBowT[count].y *= size;
+        marisaBowT[count].x = (long)(x + ((double)marisaBow[count].x * size));
+        marisaBowT[count].y = (long)(y + ((double)marisaBow[count].y * ((yMultiplierAbs)?size:abs(size))));
     }
     for (int count = 0; count < 67; count++) {
-        chenProfileT[count].x = chenProfile[count].x + x;
-        chenProfileT[count].y = chenProfile[count].y + y;
-        chenProfileT[count].x *= size;
-        chenProfileT[count].y *= size;
+        chenProfileT[count].x = (long)(x + ((double)chenProfile[count].x * size));
+        chenProfileT[count].y = (long)(y + ((double)chenProfile[count].y * ((yMultiplierAbs)?size:abs(size))));
     }
     for (int count = 0; count < 50; count++) {
-        chenEarLeftT[count].x = chenEarLeft[count].x + x;
-        chenEarLeftT[count].y = chenEarLeft[count].y + y;
-        chenEarLeftT[count].x *= size;
-        chenEarLeftT[count].y *= size;
+        chenEarLeftT[count].x = (long)(x + ((double)chenEarLeft[count].x * size));
+        chenEarLeftT[count].y = (long)(y + ((double)chenEarLeft[count].y * ((yMultiplierAbs)?size:abs(size))));
     }
     for (int count = 0; count < 19; count++) {
-        chenEarRightT[count].x = chenEarRight[count].x + x;
-        chenEarRightT[count].y = chenEarRight[count].y + y;
-        chenEarRightT[count].x *= size;
-        chenEarRightT[count].y *= size;
+        chenEarRightT[count].x = (long)(x + ((double)chenEarRight[count].x * size));
+        chenEarRightT[count].y = (long)(y + ((double)chenEarRight[count].y * ((yMultiplierAbs)?size:abs(size))));
     }
     for (int count = 0; count < 13; count++) {
-        chenHatLittlePieceT[count].x = chenHatLittlePiece[count].x + x;
-        chenHatLittlePieceT[count].y = chenHatLittlePiece[count].y + y;
-        chenHatLittlePieceT[count].x *= size;
-        chenHatLittlePieceT[count].y *= size;
+        chenHatLittlePieceT[count].x = (long)(x + ((double)chenHatLittlePiece[count].x * size));
+        chenHatLittlePieceT[count].y = (long)(y + ((double)chenHatLittlePiece[count].y * ((yMultiplierAbs)?size:abs(size))));
     }
     for (int count = 0; count < 32; count++) {
-        chenHatT[count].x = chenHat[count].x + x;
-        chenHatT[count].y = chenHat[count].y + y;
-        chenHatT[count].x *= size;
-        chenHatT[count].y *= size;
+        chenHatT[count].x = (long)(x + ((double)chenHat[count].x * size));
+        chenHatT[count].y = (long)(y + ((double)chenHat[count].y * ((yMultiplierAbs)?size:abs(size))));
     }
     for (int count = 0; count < 21; count++) {
-        chenClothesT[count].x = chenClothes[count].x + x;
-        chenClothesT[count].y = chenClothes[count].y + y;
-        chenClothesT[count].x *= size;
-        chenClothesT[count].y *= size;
+        chenClothesT[count].x = (long)(x + ((double)chenClothes[count].x * size));
+        chenClothesT[count].y = (long)(y + ((double)chenClothes[count].y * ((yMultiplierAbs)?size:abs(size))));
     }
     for (int count = 0; count < 75; count++) {
-        cirnoProfileT[count].x = cirnoProfile[count].x + x;
-        cirnoProfileT[count].y = cirnoProfile[count].y + y;
-        cirnoProfileT[count].x *= size;
-        cirnoProfileT[count].y *= size;
+        cirnoProfileT[count].x = (long)(x + ((double)cirnoProfile[count].x * size));
+        cirnoProfileT[count].y = (long)(y + ((double)cirnoProfile[count].y * ((yMultiplierAbs)?size:abs(size))));
     }
     for (int count = 0; count < 4; count++) {
-        cirnoBowT[count].x = cirnoBow[count].x + x;
-        cirnoBowT[count].y = cirnoBow[count].y + y;
-        cirnoBowT[count].x *= size;
-        cirnoBowT[count].y *= size;
+        cirnoBowT[count].x = (long)(x + ((double)cirnoBow[count].x * size));
+        cirnoBowT[count].y = (long)(y + ((double)cirnoBow[count].y * ((yMultiplierAbs)?size:abs(size))));
     }
     for (int count = 0; count < 17; count++) {
-        cirnoHat1T[count].x = cirnoHat1[count].x + x;
-        cirnoHat1T[count].y = cirnoHat1[count].y + y;
-        cirnoHat1T[count].x *= size;
-        cirnoHat1T[count].y *= size;
+        cirnoHat1T[count].x = (long)(x + ((double)cirnoHat1[count].x * size));
+        cirnoHat1T[count].y = (long)(y + ((double)cirnoHat1[count].y * ((yMultiplierAbs)?size:abs(size))));
     }
     for (int count = 0; count < 9; count++) {
-        cirnoHat2T[count].x = cirnoHat2[count].x + x;
-        cirnoHat2T[count].y = cirnoHat2[count].y + y;
-        cirnoHat2T[count].x *= size;
-        cirnoHat2T[count].y *= size;
+        cirnoHat2T[count].x = (long)(x + ((double)cirnoHat2[count].x * size));
+        cirnoHat2T[count].y = (long)(y + ((double)cirnoHat2[count].y * ((yMultiplierAbs)?size:abs(size))));
     }
     for (int count = 0; count < 5; count++) {
-        cirnoHat3T[count].x = cirnoHat3[count].x + x;
-        cirnoHat3T[count].y = cirnoHat3[count].y + y;
-        cirnoHat3T[count].x *= size;
-        cirnoHat3T[count].y *= size;
+        cirnoHat3T[count].x = (long)(x + ((double)cirnoHat3[count].x * size));
+        cirnoHat3T[count].y = (long)(y + ((double)cirnoHat3[count].y * ((yMultiplierAbs)?size:abs(size))));
     }
     for (int count = 0; count < 6; count++) {
-        cirnoIce1T[count].x = cirnoIce1[count].x + x;
-        cirnoIce1T[count].y = cirnoIce1[count].y + y;
-        cirnoIce1T[count].x *= size;
-        cirnoIce1T[count].y *= size;
+        cirnoIce1T[count].x = (long)(x + ((double)cirnoIce1[count].x * size));
+        cirnoIce1T[count].y = (long)(y + ((double)cirnoIce1[count].y * ((yMultiplierAbs)?size:abs(size))));
     }
     for (int count = 0; count < 7; count++) {
-        cirnoIce2T[count].x = cirnoIce2[count].x + x;
-        cirnoIce2T[count].y = cirnoIce2[count].y + y;
-        cirnoIce2T[count].x *= size;
-        cirnoIce2T[count].y *= size;
+        cirnoIce2T[count].x = (long)(x + ((double)cirnoIce2[count].x * size));
+        cirnoIce2T[count].y = (long)(y + ((double)cirnoIce2[count].y * ((yMultiplierAbs)?size:abs(size))));
     }
     for (int count = 0; count < 7; count++) {
-        cirnoIce3T[count].x = cirnoIce3[count].x + x;
-        cirnoIce3T[count].y = cirnoIce3[count].y + y;
-        cirnoIce3T[count].x *= size;
-        cirnoIce3T[count].y *= size;
+        cirnoIce3T[count].x = (long)(x + ((double)cirnoIce3[count].x * size));
+        cirnoIce3T[count].y = (long)(y + ((double)cirnoIce3[count].y * ((yMultiplierAbs)?size:abs(size))));
     }
     for (int count = 0; count < 4; count++) {
-        cirnoIce4T[count].x = cirnoIce4[count].x + x;
-        cirnoIce4T[count].y = cirnoIce4[count].y + y;
-        cirnoIce4T[count].x *= size;
-        cirnoIce4T[count].y *= size;
+        cirnoIce4T[count].x = (long)(x + ((double)cirnoIce4[count].x * size));
+        cirnoIce4T[count].y = (long)(y + ((double)cirnoIce4[count].y * ((yMultiplierAbs)?size:abs(size))));
     }
     for (int count = 0; count < 65; count++) {
-        nazrinProfileT[count].x = nazrinProfile[count].x + x;
-        nazrinProfileT[count].y = nazrinProfile[count].y + y;
-        nazrinProfileT[count].x *= size;
-        nazrinProfileT[count].y *= size;
+        nazrinProfileT[count].x = (long)(x + ((double)nazrinProfile[count].x * size));
+        nazrinProfileT[count].y = (long)(y + ((double)nazrinProfile[count].y * ((yMultiplierAbs)?size:abs(size))));
     }
     for (int count = 0; count < 15; count++) {
-        nazrinClothesT[count].x = nazrinClothes[count].x + x;
-        nazrinClothesT[count].y = nazrinClothes[count].y + y;
-        nazrinClothesT[count].x *= size;
-        nazrinClothesT[count].y *= size;
+        nazrinClothesT[count].x = (long)(x + ((double)nazrinClothes[count].x * size));
+        nazrinClothesT[count].y = (long)(y + ((double)nazrinClothes[count].y * ((yMultiplierAbs)?size:abs(size))));
     }
     for (int count = 0; count < 23; count++) {
-        nazrinClothesLinesT[count].x = nazrinClothesLines[count].x + x;
-        nazrinClothesLinesT[count].y = nazrinClothesLines[count].y + y;
-        nazrinClothesLinesT[count].x *= size;
-        nazrinClothesLinesT[count].y *= size;
+        nazrinClothesLinesT[count].x = (long)(x + ((double)nazrinClothesLines[count].x * size));
+        nazrinClothesLinesT[count].y = (long)(y + ((double)nazrinClothesLines[count].y * ((yMultiplierAbs)?size:abs(size))));
     }
     for (int count = 0; count < 18; count++) {
-        nazrinEarLeftT[count].x = nazrinEarLeft[count].x + x;
-        nazrinEarLeftT[count].y = nazrinEarLeft[count].y + y;
-        nazrinEarLeftT[count].x *= size;
-        nazrinEarLeftT[count].y *= size;
+        nazrinEarLeftT[count].x = (long)(x + ((double)nazrinEarLeft[count].x * size));
+        nazrinEarLeftT[count].y = (long)(y + ((double)nazrinEarLeft[count].y * ((yMultiplierAbs)?size:abs(size))));
     }
     for (int count = 0; count < 12; count++) {
-        nazrinEarLeftInsideT[count].x = nazrinEarLeftInside[count].x + x;
-        nazrinEarLeftInsideT[count].y = nazrinEarLeftInside[count].y + y;
-        nazrinEarLeftInsideT[count].x *= size;
-        nazrinEarLeftInsideT[count].y *= size;
+        nazrinEarLeftInsideT[count].x = (long)(x + ((double)nazrinEarLeftInside[count].x * size));
+        nazrinEarLeftInsideT[count].y = (long)(y + ((double)nazrinEarLeftInside[count].y * ((yMultiplierAbs)?size:abs(size))));
     }
     for (int count = 0; count < 12; count++) {
-        nazrinEarRightT[count].x = nazrinEarRight[count].x + x;
-        nazrinEarRightT[count].y = nazrinEarRight[count].y + y;
-        nazrinEarRightT[count].x *= size;
-        nazrinEarRightT[count].y *= size;
+        nazrinEarRightT[count].x = (long)(x + ((double)nazrinEarRight[count].x * size));
+        nazrinEarRightT[count].y = (long)(y + ((double)nazrinEarRight[count].y * ((yMultiplierAbs)?size:abs(size))));
     }
     for (int count = 0; count < 12; count++) {
-        nazrinEarRightInsideT[count].x = nazrinEarRightInside[count].x + x;
-        nazrinEarRightInsideT[count].y = nazrinEarRightInside[count].y + y;
-        nazrinEarRightInsideT[count].x *= size;
-        nazrinEarRightInsideT[count].y *= size;
+        nazrinEarRightInsideT[count].x = (long)(x + ((double)nazrinEarRightInside[count].x * size));
+        nazrinEarRightInsideT[count].y = (long)(y + ((double)nazrinEarRightInside[count].y * ((yMultiplierAbs)?size:abs(size))));
     }
     for (int count = 0; count < 16; count++) {
-        rumiaClothesT[count].x = rumiaClothes[count].x + x;
-        rumiaClothesT[count].y = rumiaClothes[count].y + y;
-        rumiaClothesT[count].x *= size;
-        rumiaClothesT[count].y *= size;
+        rumiaClothesT[count].x = (long)(x + ((double)rumiaClothes[count].x * size));
+        rumiaClothesT[count].y = (long)(y + ((double)rumiaClothes[count].y * ((yMultiplierAbs)?size:abs(size))));
     }
     for (int count = 0; count < 6; count++) {
-        rumiaSlings1T[count].x = rumiaSlings1[count].x + x;
-        rumiaSlings1T[count].y = rumiaSlings1[count].y + y;
-        rumiaSlings1T[count].x *= size;
-        rumiaSlings1T[count].y *= size;
+        rumiaSlings1T[count].x = (long)(x + ((double)rumiaSlings1[count].x * size));
+        rumiaSlings1T[count].y = (long)(y + ((double)rumiaSlings1[count].y * ((yMultiplierAbs)?size:abs(size))));
     }
     for (int count = 0; count < 6; count++) {
-        rumiaSlings2T[count].x = rumiaSlings2[count].x + x;
-        rumiaSlings2T[count].y = rumiaSlings2[count].y + y;
-        rumiaSlings2T[count].x *= size;
-        rumiaSlings2T[count].y *= size;
+        rumiaSlings2T[count].x = (long)(x + ((double)rumiaSlings2[count].x * size));
+        rumiaSlings2T[count].y = (long)(y + ((double)rumiaSlings2[count].y * ((yMultiplierAbs)?size:abs(size))));
     }
     for (int count = 0; count < 4; count++) {
-        rumiaBow1T[count].x = rumiaBow1[count].x + x;
-        rumiaBow1T[count].y = rumiaBow1[count].y + y;
-        rumiaBow1T[count].x *= size;
-        rumiaBow1T[count].y *= size;
+        rumiaBow1T[count].x = (long)(x + ((double)rumiaBow1[count].x * size));
+        rumiaBow1T[count].y = (long)(y + ((double)rumiaBow1[count].y * ((yMultiplierAbs)?size:abs(size))));
     }
     for (int count = 0; count < 4; count++) {
-        rumiaBow2T[count].x = rumiaBow2[count].x + x;
-        rumiaBow2T[count].y = rumiaBow2[count].y + y;
-        rumiaBow2T[count].x *= size;
-        rumiaBow2T[count].y *= size;
+        rumiaBow2T[count].x = (long)(x + ((double)rumiaBow2[count].x * size));
+        rumiaBow2T[count].y = (long)(y + ((double)rumiaBow2[count].y * ((yMultiplierAbs)?size:abs(size))));
     }
     for (int count = 0; count < 3; count++) {
-        rumiaRedTriangleT[count].x = rumiaRedTriangle[count].x + x;
-        rumiaRedTriangleT[count].y = rumiaRedTriangle[count].y + y;
-        rumiaRedTriangleT[count].x *= size;
-        rumiaRedTriangleT[count].y *= size;
+        rumiaRedTriangleT[count].x = (long)(x + ((double)rumiaRedTriangle[count].x * size));
+        rumiaRedTriangleT[count].y = (long)(y + ((double)rumiaRedTriangle[count].y * ((yMultiplierAbs)?size:abs(size))));
     }
     for (int count = 0; count < 4; count++) {
-        rumiaBow1WT[count].x = rumiaBow1W[count].x + x;
-        rumiaBow1WT[count].y = rumiaBow1W[count].y + y;
-        rumiaBow1WT[count].x *= size;
-        rumiaBow1WT[count].y *= size;
+        rumiaBow1WT[count].x = (long)(x + ((double)rumiaBow1W[count].x * size));
+        rumiaBow1WT[count].y = (long)(y + ((double)rumiaBow1W[count].y * ((yMultiplierAbs)?size:abs(size))));
     }
     for (int count = 0; count < 4; count++) {
-        rumiaBow2WT[count].x = rumiaBow2W[count].x + x;
-        rumiaBow2WT[count].y = rumiaBow2W[count].y + y;
-        rumiaBow2WT[count].x *= size;
-        rumiaBow2WT[count].y *= size;
+        rumiaBow2WT[count].x = (long)(x + ((double)rumiaBow2W[count].x * size));
+        rumiaBow2WT[count].y = (long)(y + ((double)rumiaBow2W[count].y * ((yMultiplierAbs)?size:abs(size))));
     }
 }
 
@@ -1669,7 +1565,7 @@ void drawEyes(bool eyesClosed, COLORREF eyesColor) {
     }
 }
 
-void satoriBody(COLORREF hairColor, COLORREF clothesColor, int x, int y, int size) {
+void satoriBody(COLORREF hairColor, COLORREF clothesColor, int x, int y, double size, bool yMultiplierAbs) {
     txSetFillColor (hairColor);
     txPolygon (satoriProfileT, 63);
 
@@ -1682,39 +1578,39 @@ void satoriBody(COLORREF hairColor, COLORREF clothesColor, int x, int y, int siz
     txPolygon (collarT, 27);
     txSetFillColor (TX_TRANSPARENT);
     txPolygon (collarLines1T, 8);
-    txLine((x+127)*size, (y+157)*size, (x+129)*size, (y+160)*size);
-    txLine((x+131)*size, (y+162)*size, (x+134)*size, (y+164)*size);
-    txLine((x+139)*size, (y+167)*size, (x+141)*size, (y+169)*size);
-    txLine((x+146)*size, (y+170)*size, (x+150)*size, (y+171)*size);
+    txLine(x+(127*size), y+(157*((yMultiplierAbs)?size:abs(size))), x+(129*size), y+(160*((yMultiplierAbs)?size:abs(size))));
+    txLine(x+(131*size), y+(162*((yMultiplierAbs)?size:abs(size))), x+(134*size), y+(164*((yMultiplierAbs)?size:abs(size))));
+    txLine(x+(139*size), y+(167*((yMultiplierAbs)?size:abs(size))), x+(141*size), y+(169*((yMultiplierAbs)?size:abs(size))));
+    txLine(x+(146*size), y+(170*((yMultiplierAbs)?size:abs(size))), x+(150*size), y+(171*((yMultiplierAbs)?size:abs(size))));
     txPolygon (collarLines2T, 8);
-    txLine((x+175)*size, (y+156)*size, (x+174)*size, (y+158)*size);
-    txLine((x+172)*size, (y+162)*size, (x+171)*size, (y+164)*size);
-    txLine((x+168)*size, (y+166)*size, (x+166)*size, (y+168)*size);
-    txLine((x+164)*size, (y+171)*size, (x+161)*size, (y+172)*size);
-    txLine((x+183)*size, (y+155)*size, (x+185)*size, (y+161)*size);
-    txLine((x+183)*size, (y+168)*size, (x+181)*size, (y+160)*size);
-    txLine((x+181)*size, (y+160)*size, (x+179)*size, (y+160)*size);
-    txLine((x+179)*size, (y+160)*size, (x+179)*size, (y+166)*size);
-    txLine((x+179)*size, (y+166)*size, (x+181)*size, (y+171)*size);
-    txLine((x+179)*size, (y+160)*size, (x+173)*size, (y+166)*size);
-    txLine((x+180)*size, (y+175)*size, (x+175)*size, (y+170)*size);
-    txLine((x+175)*size, (y+170)*size, (x+172)*size, (y+169)*size);
-    txLine((x+172)*size, (y+169)*size, (x+170)*size, (y+172)*size);
-    txLine((x+170)*size, (y+172)*size, (x+170)*size, (y+177)*size);
-    txLine((x+170)*size, (y+172)*size, (x+165)*size, (y+173)*size);
-    txLine((x+138)*size, (y+176)*size, (x+137)*size, (y+169)*size);
-    txLine((x+135)*size, (y+169)*size, (x+133)*size, (y+170)*size);
-    txLine((x+133)*size, (y+170)*size, (x+129)*size, (y+177)*size);
-    txLine((x+126)*size, (y+170)*size, (x+128)*size, (y+166)*size);
-    txLine((x+128)*size, (y+166)*size, (x+126)*size, (y+165)*size);
-    txLine((x+126)*size, (y+165)*size, (x+124)*size, (y+166)*size);
-    txLine((x+124)*size, (y+166)*size, (x+116)*size, (y+171)*size);
-    txLine((x+119)*size, (y+164)*size, (x+121)*size, (y+160)*size);
-    txLine((x+121)*size, (y+160)*size, (x+119)*size, (y+159)*size);
-    txLine((x+119)*size, (y+159)*size, (x+116)*size, (y+161)*size);
+    txLine(x+(175*size), y+(156*((yMultiplierAbs)?size:abs(size))), x+(174*size), y+(158*((yMultiplierAbs)?size:abs(size))));
+    txLine(x+(172*size), y+(162*((yMultiplierAbs)?size:abs(size))), x+(171*size), y+(164*((yMultiplierAbs)?size:abs(size))));
+    txLine(x+(168*size), y+(166*((yMultiplierAbs)?size:abs(size))), x+(166*size), y+(168*((yMultiplierAbs)?size:abs(size))));
+    txLine(x+(164*size), y+(171*((yMultiplierAbs)?size:abs(size))), x+(161*size), y+(172*((yMultiplierAbs)?size:abs(size))));
+    txLine(x+(183*size), y+(155*((yMultiplierAbs)?size:abs(size))), x+(185*size), y+(161*((yMultiplierAbs)?size:abs(size))));
+    txLine(x+(183*size), y+(168*((yMultiplierAbs)?size:abs(size))), x+(181*size), y+(160*((yMultiplierAbs)?size:abs(size))));
+    txLine(x+(181*size), y+(160*((yMultiplierAbs)?size:abs(size))), x+(179*size), y+(160*((yMultiplierAbs)?size:abs(size))));
+    txLine(x+(179*size), y+(160*((yMultiplierAbs)?size:abs(size))), x+(179*size), y+(166*((yMultiplierAbs)?size:abs(size))));
+    txLine(x+(179*size), y+(166*((yMultiplierAbs)?size:abs(size))), x+(181*size), y+(171*((yMultiplierAbs)?size:abs(size))));
+    txLine(x+(179*size), y+(160*((yMultiplierAbs)?size:abs(size))), x+(173*size), y+(166*((yMultiplierAbs)?size:abs(size))));
+    txLine(x+(180*size), y+(175*((yMultiplierAbs)?size:abs(size))), x+(175*size), y+(170*((yMultiplierAbs)?size:abs(size))));
+    txLine(x+(175*size), y+(170*((yMultiplierAbs)?size:abs(size))), x+(172*size), y+(169*((yMultiplierAbs)?size:abs(size))));
+    txLine(x+(172*size), y+(169*((yMultiplierAbs)?size:abs(size))), x+(170*size), y+(172*((yMultiplierAbs)?size:abs(size))));
+    txLine(x+(170*size), y+(172*((yMultiplierAbs)?size:abs(size))), x+(170*size), y+(177*((yMultiplierAbs)?size:abs(size))));
+    txLine(x+(170*size), y+(172*((yMultiplierAbs)?size:abs(size))), x+(165*size), y+(173*((yMultiplierAbs)?size:abs(size))));
+    txLine(x+(138*size), y+(176*((yMultiplierAbs)?size:abs(size))), x+(137*size), y+(169*((yMultiplierAbs)?size:abs(size))));
+    txLine(x+(135*size), y+(169*((yMultiplierAbs)?size:abs(size))), x+(133*size), y+(170*((yMultiplierAbs)?size:abs(size))));
+    txLine(x+(133*size), y+(170*((yMultiplierAbs)?size:abs(size))), x+(129*size), y+(177*((yMultiplierAbs)?size:abs(size))));
+    txLine(x+(126*size), y+(170*((yMultiplierAbs)?size:abs(size))), x+(128*size), y+(166*((yMultiplierAbs)?size:abs(size))));
+    txLine(x+(128*size), y+(166*((yMultiplierAbs)?size:abs(size))), x+(126*size), y+(165*((yMultiplierAbs)?size:abs(size))));
+    txLine(x+(126*size), y+(165*((yMultiplierAbs)?size:abs(size))), x+(124*size), y+(166*((yMultiplierAbs)?size:abs(size))));
+    txLine(x+(124*size), y+(166*((yMultiplierAbs)?size:abs(size))), x+(116*size), y+(171*((yMultiplierAbs)?size:abs(size))));
+    txLine(x+(119*size), y+(164*((yMultiplierAbs)?size:abs(size))), x+(121*size), y+(160*((yMultiplierAbs)?size:abs(size))));
+    txLine(x+(121*size), y+(160*((yMultiplierAbs)?size:abs(size))), x+(119*size), y+(159*((yMultiplierAbs)?size:abs(size))));
+    txLine(x+(119*size), y+(159*((yMultiplierAbs)?size:abs(size))), x+(116*size), y+(161*((yMultiplierAbs)?size:abs(size))));
 }
 
-void marisaBody(COLORREF hairColor, COLORREF clothesColor, int x, int y, int size) {
+void marisaBody(COLORREF hairColor, COLORREF clothesColor, int x, int y, double size, bool yMultiplierAbs) {
     txSetFillColor (hairColor);
     txPolygon (marisaProfileT, 74);
 
@@ -1723,95 +1619,95 @@ void marisaBody(COLORREF hairColor, COLORREF clothesColor, int x, int y, int siz
 
     txSetFillColor(RGB (232, 243, 255));
     txPolygon (marisaClothesT, 26);
-    txLine((x+130)*size, (y+154)*size, (x+132)*size, (y+156)*size);
-    txLine((x+132)*size, (y+156)*size, (x+137)*size, (y+153)*size);
-    txLine((x+132)*size, (y+156)*size, (x+134)*size, (y+160)*size);
-    txLine((x+134)*size, (y+160)*size, (x+141)*size, (y+157)*size);
-    txLine((x+134)*size, (y+160)*size, (x+137)*size, (y+165)*size);
-    txLine((x+137)*size, (y+165)*size, (x+139)*size, (y+167)*size);
-    txLine((x+139)*size, (y+167)*size, (x+142)*size, (y+167)*size);
-    txLine((x+141)*size, (y+164)*size, (x+145)*size, (y+169)*size);
-    txLine((x+141)*size, (y+164)*size, (x+145)*size, (y+162)*size);
-    txLine((x+145)*size, (y+169)*size, (x+151)*size, (y+165)*size);
-    txLine((x+142)*size, (y+167)*size, (x+145)*size, (y+172)*size);
-    txLine((x+145)*size, (y+172)*size, (x+152)*size, (y+173)*size);
-    txLine((x+152)*size, (y+166)*size, (x+153)*size, (y+177)*size);
-    txLine((x+153)*size, (y+171)*size, (x+157)*size, (y+174)*size);
-    txLine((x+157)*size, (y+174)*size, (x+161)*size, (y+174)*size);
-    txLine((x+161)*size, (y+174)*size, (x+165)*size, (y+171)*size);
-    txLine((x+166)*size, (y+164)*size, (x+165)*size, (y+177)*size);
-    txLine((x+159)*size, (y+168)*size, (x+159)*size, (y+174)*size);
-    txLine((x+159)*size, (y+168)*size, (x+165)*size, (y+164)*size);
-    txLine((x+163)*size, (y+160)*size, (x+166)*size, (y+168)*size);
-    txLine((x+166)*size, (y+168)*size, (x+172)*size, (y+169)*size);
-    txLine((x+172)*size, (y+169)*size, (x+174)*size, (y+160)*size);
-    txLine((x+174)*size, (y+160)*size, (x+162)*size, (y+160)*size);
-    txLine((x+174)*size, (y+162)*size, (x+176)*size, (y+162)*size);
-    txLine((x+174)*size, (y+160)*size, (x+176)*size, (y+159)*size);
-    txLine((x+176)*size, (y+159)*size, (x+170)*size, (y+152)*size);
-    txLine((x+176)*size, (y+159)*size, (x+178)*size, (y+157)*size);
+    txLine(x+(130*size), y+(154*((yMultiplierAbs)?size:abs(size))), x+(132*size), y+(156*((yMultiplierAbs)?size:abs(size))));
+    txLine(x+(132*size), y+(156*((yMultiplierAbs)?size:abs(size))), x+(137*size), y+(153*((yMultiplierAbs)?size:abs(size))));
+    txLine(x+(132*size), y+(156*((yMultiplierAbs)?size:abs(size))), x+(134*size), y+(160*((yMultiplierAbs)?size:abs(size))));
+    txLine(x+(134*size), y+(160*((yMultiplierAbs)?size:abs(size))), x+(141*size), y+(157*((yMultiplierAbs)?size:abs(size))));
+    txLine(x+(134*size), y+(160*((yMultiplierAbs)?size:abs(size))), x+(137*size), y+(165*((yMultiplierAbs)?size:abs(size))));
+    txLine(x+(137*size), y+(165*((yMultiplierAbs)?size:abs(size))), x+(139*size), y+(167*((yMultiplierAbs)?size:abs(size))));
+    txLine(x+(139*size), y+(167*((yMultiplierAbs)?size:abs(size))), x+(142*size), y+(167*((yMultiplierAbs)?size:abs(size))));
+    txLine(x+(141*size), y+(164*((yMultiplierAbs)?size:abs(size))), x+(145*size), y+(169*((yMultiplierAbs)?size:abs(size))));
+    txLine(x+(141*size), y+(164*((yMultiplierAbs)?size:abs(size))), x+(145*size), y+(162*((yMultiplierAbs)?size:abs(size))));
+    txLine(x+(145*size), y+(169*((yMultiplierAbs)?size:abs(size))), x+(151*size), y+(165*((yMultiplierAbs)?size:abs(size))));
+    txLine(x+(142*size), y+(167*((yMultiplierAbs)?size:abs(size))), x+(145*size), y+(172*((yMultiplierAbs)?size:abs(size))));
+    txLine(x+(145*size), y+(172*((yMultiplierAbs)?size:abs(size))), x+(152*size), y+(173*((yMultiplierAbs)?size:abs(size))));
+    txLine(x+(152*size), y+(166*((yMultiplierAbs)?size:abs(size))), x+(153*size), y+(177*((yMultiplierAbs)?size:abs(size))));
+    txLine(x+(153*size), y+(171*((yMultiplierAbs)?size:abs(size))), x+(157*size), y+(174*((yMultiplierAbs)?size:abs(size))));
+    txLine(x+(157*size), y+(174*((yMultiplierAbs)?size:abs(size))), x+(161*size), y+(174*((yMultiplierAbs)?size:abs(size))));
+    txLine(x+(161*size), y+(174*((yMultiplierAbs)?size:abs(size))), x+(165*size), y+(171*((yMultiplierAbs)?size:abs(size))));
+    txLine(x+(166*size), y+(164*((yMultiplierAbs)?size:abs(size))), x+(165*size), y+(177*((yMultiplierAbs)?size:abs(size))));
+    txLine(x+(159*size), y+(168*((yMultiplierAbs)?size:abs(size))), x+(159*size), y+(174*((yMultiplierAbs)?size:abs(size))));
+    txLine(x+(159*size), y+(168*((yMultiplierAbs)?size:abs(size))), x+(165*size), y+(164*((yMultiplierAbs)?size:abs(size))));
+    txLine(x+(163*size), y+(160*((yMultiplierAbs)?size:abs(size))), x+(166*size), y+(168*((yMultiplierAbs)?size:abs(size))));
+    txLine(x+(166*size), y+(168*((yMultiplierAbs)?size:abs(size))), x+(172*size), y+(169*((yMultiplierAbs)?size:abs(size))));
+    txLine(x+(172*size), y+(169*((yMultiplierAbs)?size:abs(size))), x+(174*size), y+(160*((yMultiplierAbs)?size:abs(size))));
+    txLine(x+(174*size), y+(160*((yMultiplierAbs)?size:abs(size))), x+(162*size), y+(160*((yMultiplierAbs)?size:abs(size))));
+    txLine(x+(174*size), y+(162*((yMultiplierAbs)?size:abs(size))), x+(176*size), y+(162*((yMultiplierAbs)?size:abs(size))));
+    txLine(x+(174*size), y+(160*((yMultiplierAbs)?size:abs(size))), x+(176*size), y+(159*((yMultiplierAbs)?size:abs(size))));
+    txLine(x+(176*size), y+(159*((yMultiplierAbs)?size:abs(size))), x+(170*size), y+(152*((yMultiplierAbs)?size:abs(size))));
+    txLine(x+(176*size), y+(159*((yMultiplierAbs)?size:abs(size))), x+(178*size), y+(157*((yMultiplierAbs)?size:abs(size))));
     txSetFillColor(clothesColor);
     txPolygon(marisaSlings1T, 4);
     txPolygon(marisaSlings2T, 6);
 }
 
-void chenBody(COLORREF hairColor, COLORREF clothesColor, int x, int y, int size) {
+void chenBody(COLORREF hairColor, COLORREF clothesColor, int x, int y, double size, bool yMultiplierAbs) {
     txSetFillColor(hairColor);
     txPolygon(chenProfileT, 67);
     txSetFillColor(RGB (80, 22, 0));
     txPolygon(chenEarLeftT, 50);
-    txLine((x+66)*size, (y+5)*size, (x+78)*size, (y+11)*size);
-    txLine((x+78)*size, (y+11)*size, (x+88)*size, (y+16)*size);
-    txLine((x+88)*size, (y+16)*size, (x+97)*size, (y+24)*size);
-    txLine((x+97)*size, (y+24)*size, (x+104)*size, (y+32)*size);
-    txLine((x+81)*size, (y+40)*size, (x+76)*size, (y+37)*size);
-    txLine((x+76)*size, (y+37)*size, (x+66)*size, (y+27)*size);
-    txLine((x+66)*size, (y+27)*size, (x+55)*size, (y+15)*size);
-    txLine((x+55)*size, (y+15)*size, (x+40)*size, (y+3)*size);
-    txLine((x+48)*size, (y+9)*size, (x+44)*size, (y+10)*size);
-    txLine((x+44)*size, (y+10)*size, (x+43)*size, (y+11)*size);
-    txLine((x+43)*size, (y+11)*size, (x+43)*size, (y+15)*size);
-    txLine((x+43)*size, (y+15)*size, (x+46)*size, (y+17)*size);
+    txLine(x+(66*size), y+(5*((yMultiplierAbs)?size:abs(size))), x+(78*size), y+(11*((yMultiplierAbs)?size:abs(size))));
+    txLine(x+(78*size), y+(11*((yMultiplierAbs)?size:abs(size))), x+(88*size), y+(16*((yMultiplierAbs)?size:abs(size))));
+    txLine(x+(88*size), y+(16*((yMultiplierAbs)?size:abs(size))), x+(97*size), y+(24*((yMultiplierAbs)?size:abs(size))));
+    txLine(x+(97*size), y+(24*((yMultiplierAbs)?size:abs(size))), x+(104*size), y+(32*((yMultiplierAbs)?size:abs(size))));
+    txLine(x+(81*size), y+(40*((yMultiplierAbs)?size:abs(size))), x+(76*size), y+(37*((yMultiplierAbs)?size:abs(size))));
+    txLine(x+(76*size), y+(37*((yMultiplierAbs)?size:abs(size))), x+(66*size), y+(27*((yMultiplierAbs)?size:abs(size))));
+    txLine(x+(66*size), y+(27*((yMultiplierAbs)?size:abs(size))), x+(55*size), y+(15*((yMultiplierAbs)?size:abs(size))));
+    txLine(x+(55*size), y+(15*((yMultiplierAbs)?size:abs(size))), x+(40*size), y+(3*((yMultiplierAbs)?size:abs(size))));
+    txLine(x+(48*size), y+(9*((yMultiplierAbs)?size:abs(size))), x+(44*size), y+(10*((yMultiplierAbs)?size:abs(size))));
+    txLine(x+(44*size), y+(10*((yMultiplierAbs)?size:abs(size))), x+(43*size), y+(11*((yMultiplierAbs)?size:abs(size))));
+    txLine(x+(43*size), y+(11*((yMultiplierAbs)?size:abs(size))), x+(43*size), y+(15*((yMultiplierAbs)?size:abs(size))));
+    txLine(x+(43*size), y+(15*((yMultiplierAbs)?size:abs(size))), x+(46*size), y+(17*((yMultiplierAbs)?size:abs(size))));
     txPolygon(chenEarRightT, 19);
-    txLine((x+215)*size, (y+30)*size, (x+218)*size, (y+28)*size);
-    txLine((x+218)*size, (y+28)*size, (x+221)*size, (y+23)*size);
-    txLine((x+221)*size, (y+23)*size, (x+222)*size, (y+11)*size);
-    txLine((x+222)*size, (y+11)*size, (x+221)*size, (y+0)*size);
+    txLine(x+(215*size), y+(30*((yMultiplierAbs)?size:abs(size))), x+(218*size), y+(28*((yMultiplierAbs)?size:abs(size))));
+    txLine(x+(218*size), y+(28*((yMultiplierAbs)?size:abs(size))), x+(221*size), y+(23*((yMultiplierAbs)?size:abs(size))));
+    txLine(x+(221*size), y+(23*((yMultiplierAbs)?size:abs(size))), x+(222*size), y+(11*((yMultiplierAbs)?size:abs(size))));
+    txLine(x+(222*size), y+(11*((yMultiplierAbs)?size:abs(size))), x+(221*size), y+(0*((yMultiplierAbs)?size:abs(size))));
 
     txSetFillColor(RGB (255, 235, 206));
     txPolygon(faceShapeT, 68);
 
     txSetFillColor(clothesColor);
     txPolygon(chenClothesT, 21);
-    txLine((x+118)*size, (y+161)*size, (x+127)*size, (y+170)*size);
-    txLine((x+127)*size, (y+170)*size, (x+138)*size, (y+177)*size);
-    txLine((x+185)*size, (y+161)*size, (x+177)*size, (y+170)*size);
-    txLine((x+177)*size, (y+170)*size, (x+168)*size, (y+177)*size);
-    txLine((x+120)*size, (y+169)*size, (x+124)*size, (y+177)*size);
-    txLine((x+184)*size, (y+168)*size, (x+184)*size, (y+177)*size);
+    txLine(x+(118*size), y+(161*((yMultiplierAbs)?size:abs(size))), x+(127*size), y+(170*((yMultiplierAbs)?size:abs(size))));
+    txLine(x+(127*size), y+(170*((yMultiplierAbs)?size:abs(size))), x+(138*size), y+(177*((yMultiplierAbs)?size:abs(size))));
+    txLine(x+(185*size), y+(161*((yMultiplierAbs)?size:abs(size))), x+(177*size), y+(170*((yMultiplierAbs)?size:abs(size))));
+    txLine(x+(177*size), y+(170*((yMultiplierAbs)?size:abs(size))), x+(168*size), y+(177*((yMultiplierAbs)?size:abs(size))));
+    txLine(x+(120*size), y+(169*((yMultiplierAbs)?size:abs(size))), x+(124*size), y+(177*((yMultiplierAbs)?size:abs(size))));
+    txLine(x+(184*size), y+(168*((yMultiplierAbs)?size:abs(size))), x+(184*size), y+(177*((yMultiplierAbs)?size:abs(size))));
     txSetColor(RGB (252, 219, 0), 1.5);
-    txLine((x+183)*size, (y+160)*size, (x+176)*size, (y+167)*size);
-    txLine((x+176)*size, (y+167)*size, (x+168)*size, (y+173)*size);
-    txLine((x+168)*size, (y+173)*size, (x+166)*size, (y+170)*size);
-    txLine((x+166)*size, (y+170)*size, (x+166)*size, (y+167)*size);
-    txLine((x+166)*size, (y+167)*size, (x+167)*size, (y+165)*size);
-    txLine((x+167)*size, (y+156)*size, (x+163)*size, (y+167)*size);
-    txLine((x+163)*size, (y+167)*size, (x+163)*size, (y+176)*size);
-    txLine((x+137)*size, (y+155)*size, (x+146)*size, (y+164)*size);
-    txLine((x+146)*size, (y+164)*size, (x+154)*size, (y+169)*size);
-    txLine((x+154)*size, (y+169)*size, (x+155)*size, (y+176)*size);
-    txLine((x+120)*size, (y+160)*size, (x+131)*size, (y+169)*size);
-    txLine((x+131)*size, (y+169)*size, (x+141)*size, (y+175)*size);
-    txLine((x+141)*size, (y+175)*size, (x+148)*size, (y+176)*size);
-    txLine((x+148)*size, (y+176)*size, (x+149)*size, (y+172)*size);
-    txLine((x+149)*size, (y+172)*size, (x+148)*size, (y+169)*size);
-    txLine((x+189)*size, (y+167)*size, (x+191)*size, (y+172)*size);
-    txLine((x+191)*size, (y+172)*size, (x+191)*size, (y+176)*size);
-    txLine((x+116)*size, (y+165)*size, (x+116)*size, (y+176)*size);
+    txLine(x+(183*size), y+(160*((yMultiplierAbs)?size:abs(size))), x+(176*size), y+(167*((yMultiplierAbs)?size:abs(size))));
+    txLine(x+(176*size), y+(167*((yMultiplierAbs)?size:abs(size))), x+(168*size), y+(173*((yMultiplierAbs)?size:abs(size))));
+    txLine(x+(168*size), y+(173*((yMultiplierAbs)?size:abs(size))), x+(166*size), y+(170*((yMultiplierAbs)?size:abs(size))));
+    txLine(x+(166*size), y+(170*((yMultiplierAbs)?size:abs(size))), x+(166*size), y+(167*((yMultiplierAbs)?size:abs(size))));
+    txLine(x+(166*size), y+(167*((yMultiplierAbs)?size:abs(size))), x+(167*size), y+(165*((yMultiplierAbs)?size:abs(size))));
+    txLine(x+(167*size), y+(156*((yMultiplierAbs)?size:abs(size))), x+(163*size), y+(167*((yMultiplierAbs)?size:abs(size))));
+    txLine(x+(163*size), y+(167*((yMultiplierAbs)?size:abs(size))), x+(163*size), y+(176*((yMultiplierAbs)?size:abs(size))));
+    txLine(x+(137*size), y+(155*((yMultiplierAbs)?size:abs(size))), x+(146*size), y+(164*((yMultiplierAbs)?size:abs(size))));
+    txLine(x+(146*size), y+(164*((yMultiplierAbs)?size:abs(size))), x+(154*size), y+(169*((yMultiplierAbs)?size:abs(size))));
+    txLine(x+(154*size), y+(169*((yMultiplierAbs)?size:abs(size))), x+(155*size), y+(176*((yMultiplierAbs)?size:abs(size))));
+    txLine(x+(120*size), y+(160*((yMultiplierAbs)?size:abs(size))), x+(131*size), y+(169*((yMultiplierAbs)?size:abs(size))));
+    txLine(x+(131*size), y+(169*((yMultiplierAbs)?size:abs(size))), x+(141*size), y+(175*((yMultiplierAbs)?size:abs(size))));
+    txLine(x+(141*size), y+(175*((yMultiplierAbs)?size:abs(size))), x+(148*size), y+(176*((yMultiplierAbs)?size:abs(size))));
+    txLine(x+(148*size), y+(176*((yMultiplierAbs)?size:abs(size))), x+(149*size), y+(172*((yMultiplierAbs)?size:abs(size))));
+    txLine(x+(149*size), y+(172*((yMultiplierAbs)?size:abs(size))), x+(148*size), y+(169*((yMultiplierAbs)?size:abs(size))));
+    txLine(x+(189*size), y+(167*((yMultiplierAbs)?size:abs(size))), x+(191*size), y+(172*((yMultiplierAbs)?size:abs(size))));
+    txLine(x+(191*size), y+(172*((yMultiplierAbs)?size:abs(size))), x+(191*size), y+(176*((yMultiplierAbs)?size:abs(size))));
+    txLine(x+(116*size), y+(165*((yMultiplierAbs)?size:abs(size))), x+(116*size), y+(176*((yMultiplierAbs)?size:abs(size))));
     txSetColor(RGB (0, 0, 0));
 }
 
-void cirnoBody(COLORREF hairColor, COLORREF clothesColor, int x, int y, int size) {
+void cirnoBody(COLORREF hairColor, COLORREF clothesColor, int x, int y, double size, bool yMultiplierAbs) {
     txSetFillColor(hairColor);
     txPolygon(cirnoProfileT, 75);
 
@@ -1826,10 +1722,10 @@ void cirnoBody(COLORREF hairColor, COLORREF clothesColor, int x, int y, int size
     txPolygon(marisaSlings2T, 6);
     txSetFillColor(RGB (255, 143, 143));
     txPolygon(cirnoBowT, 4);
-    txLine((x+152)*size, (y+170)*size, (x+152)*size, (y+174)*size);
-    txLine((x+152)*size, (y+174)*size, (x+154)*size, (y+175)*size);
-    txLine((x+154)*size, (y+175)*size, (x+158)*size, (y+175)*size);
-    txLine((x+158)*size, (y+175)*size, (x+160)*size, (y+171)*size);
+    txLine(x+(152*size), y+(170*((yMultiplierAbs)?size:abs(size))), x+(152*size), y+(174*((yMultiplierAbs)?size:abs(size))));
+    txLine(x+(152*size), y+(174*((yMultiplierAbs)?size:abs(size))), x+(154*size), y+(175*((yMultiplierAbs)?size:abs(size))));
+    txLine(x+(154*size), y+(175*((yMultiplierAbs)?size:abs(size))), x+(158*size), y+(175*((yMultiplierAbs)?size:abs(size))));
+    txLine(x+(158*size), y+(175*((yMultiplierAbs)?size:abs(size))), x+(160*size), y+(171*((yMultiplierAbs)?size:abs(size))));
 }
 
 void nazrinBody(COLORREF hairColor, COLORREF clothesColor) {
@@ -1852,7 +1748,7 @@ void nazrinBody(COLORREF hairColor, COLORREF clothesColor) {
     txPolygon(nazrinEarRightInsideT, 12);
 }
 
-void rumiaBody(COLORREF hairColor, COLORREF clothesColor, int x, int y, int size) {
+void rumiaBody(COLORREF hairColor, COLORREF clothesColor, int x, int y, double size, bool yMultiplierAbs) {
     txSetFillColor(hairColor);
     txPolygon(cirnoProfileT, 75);
 
@@ -1864,8 +1760,8 @@ void rumiaBody(COLORREF hairColor, COLORREF clothesColor, int x, int y, int size
     txSetFillColor(clothesColor);
     txPolygon(rumiaSlings1T, 6);
     txPolygon(rumiaSlings2T, 6);
-    txLine((x+148)*size, (y+162)*size, (x+159)*size, (y+168)*size);
-    txLine((x+163)*size, (y+160)*size, (x+159)*size, (y+168)*size);
+    txLine(x+(148*size), y+(162*((yMultiplierAbs)?size:abs(size))), x+(159*size), y+(168*((yMultiplierAbs)?size:abs(size))));
+    txLine(x+(163*size), y+(160*((yMultiplierAbs)?size:abs(size))), x+(159*size), y+(168*((yMultiplierAbs)?size:abs(size))));
     txSetFillColor(RGB (255, 122, 92));
     txPolygon(rumiaRedTriangleT, 3);
 }

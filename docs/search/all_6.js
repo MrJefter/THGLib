@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['replaceandresizecharacter_0',['replaceAndResizeCharacter',['../group___local.html#ga8d1411dc07deb0083d83f6ec755079fb',1,'THGLib.h']]],
+  ['replaceandresizecharacter_0',['replaceAndResizeCharacter',['../group___local.html#gad8ec27a1034ffda1b33b45ea14c1434c',1,'THGLib.h']]],
   ['rightblush_1',['rightBlush',['../group___arrays.html#gae88b7e804103289ae47282f80a01ff4d',1,'THGLib.h']]],
   ['rightblusht_2',['rightBlushT',['../group___arrays.html#ga2a35f257abd6f3ba4d2b8ad1d8058121',1,'THGLib.h']]],
   ['righteyebrow_3',['rightEyebrow',['../group___arrays.html#gae960671871c3c75a86be8c970313df1d',1,'THGLib.h']]],
@@ -13,7 +13,7 @@ var searchData=
   ['rightpupilt_10',['rightPupilT',['../group___arrays.html#ga2b68beeee8c824dfbd2a473327ccb242',1,'THGLib.h']]],
   ['righttooth_11',['rightTooth',['../group___arrays.html#ga2a6fd2f3e68f7cb0991c4621f2e70425',1,'THGLib.h']]],
   ['righttootht_12',['rightToothT',['../group___arrays.html#ga3d7ee022497d002f649ad2e73ecabcc6',1,'THGLib.h']]],
-  ['rumiabody_13',['rumiaBody',['../group___local.html#ga6b65fb41cfa894cc624a97fd4a80724c',1,'THGLib.h']]],
+  ['rumiabody_13',['rumiaBody',['../group___local.html#ga4494717df1e06c5f205bd5194344ca7d',1,'THGLib.h']]],
   ['rumiabow1_14',['rumiaBow1',['../group___arrays.html#ga3a2dad86ba11c7b233a748d365583353',1,'THGLib.h']]],
   ['rumiabow1t_15',['rumiaBow1T',['../group___arrays.html#ga54266befc6de5fe019002b6df432e67f',1,'THGLib.h']]],
   ['rumiabow1w_16',['rumiaBow1W',['../group___arrays.html#ga6f17a64568d46aeed58ef166ebdca5e3',1,'THGLib.h']]],

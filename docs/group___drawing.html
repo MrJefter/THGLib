@@ -92,9 +92,9 @@ $(document).ready(function(){initNavTree('group___drawing.html',''); initResizab
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Функции</h2></td></tr>
-<tr class="memitem:gaab24640b0609ad08ba1ec12d759dc7da"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___drawing.html#gaab24640b0609ad08ba1ec12d759dc7da">drawCharacter</a> (string characterName, int x, int y, int size, bool accessoiresAreVisible=true, bool eyesClosed=false, bool mouthOpened=true, bool eyebrowVisible=true, bool blushVisible=true, COLORREF hairColor=0, COLORREF clothesColor=0, COLORREF eyesColor=0)</td></tr>
-<tr class="memdesc:gaab24640b0609ad08ba1ec12d759dc7da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Функция отрисовки персонажа  <a href="group___drawing.html#gaab24640b0609ad08ba1ec12d759dc7da">Подробнее...</a><br /></td></tr>
-<tr class="separator:gaab24640b0609ad08ba1ec12d759dc7da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5085538192b59d65327e970887ee805c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___drawing.html#ga5085538192b59d65327e970887ee805c">drawCharacter</a> (string characterName, int x, int y, double size, bool accessoiresAreVisible=true, bool eyesClosed=false, bool mouthOpened=true, bool eyebrowVisible=true, bool blushVisible=true, COLORREF hairColor=0, COLORREF clothesColor=0, COLORREF eyesColor=0, bool yMultiplierAbs=false)</td></tr>
+<tr class="memdesc:ga5085538192b59d65327e970887ee805c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Функция отрисовки персонажа  <a href="group___drawing.html#ga5085538192b59d65327e970887ee805c">Подробнее...</a><br /></td></tr>
+<tr class="separator:ga5085538192b59d65327e970887ee805c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaaaa206673539b3306efee8b069f43709"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___drawing.html#gaaaa206673539b3306efee8b069f43709">clearScreen</a> (COLORREF fillColor=RGB(255, 255, 255), COLORREF brushColor=RGB(0, 0, 0))</td></tr>
 <tr class="memdesc:gaaaa206673539b3306efee8b069f43709"><td class="mdescLeft">&#160;</td><td class="mdescRight">Функция очистки экрана  <a href="group___drawing.html#gaaaa206673539b3306efee8b069f43709">Подробнее...</a><br /></td></tr>
 <tr class="separator:gaaaa206673539b3306efee8b069f43709"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -135,7 +135,7 @@ $(document).ready(function(){initNavTree('group___drawing.html',''); initResizab
   </table>
   </dd>
 </dl>
-<p>@usage </p><div class="fragment"><div class="line"><span class="preprocessor">#include &quot;TXLib.h&quot;</span></div>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &quot;TXLib.h&quot;</span></div>
 <div class="line"><span class="preprocessor">#include &quot;<a class="code" href="_t_h_g_lib_8h.html">THGLib.h</a>&quot;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">using namespace </span>std;</div>
@@ -143,19 +143,19 @@ $(document).ready(function(){initNavTree('group___drawing.html',''); initResizab
 <div class="line"><span class="keywordtype">int</span> main() {</div>
 <div class="line">    txCreateWindow(600, 354); <span class="comment">//Создаем окно 600x354 пикселей</span></div>
 <div class="line">    <a class="code hl_function" href="group___drawing.html#gaaaa206673539b3306efee8b069f43709">clearScreen</a>(); <span class="comment">//Очищаем экран</span></div>
-<div class="line">    <a class="code hl_function" href="group___drawing.html#gaab24640b0609ad08ba1ec12d759dc7da">drawCharacter</a>(<span class="stringliteral">&quot;Cirno&quot;</span>, 0, 0, 1);</div>
+<div class="line">    <a class="code hl_function" href="group___drawing.html#ga5085538192b59d65327e970887ee805c">drawCharacter</a>(<span class="stringliteral">&quot;Cirno&quot;</span>, 0, 0, 1);</div>
 <div class="line">    Sleep(1000);</div>
 <div class="line">    <a class="code hl_function" href="group___drawing.html#gaaaa206673539b3306efee8b069f43709">clearScreen</a>(RGB (123, 194, 148), RGB (124, 43, 207)); <span class="comment">//Очищаем экран в кастомный цвет фона и меняем цвет кисти</span></div>
-<div class="line">    <a class="code hl_function" href="group___drawing.html#gaab24640b0609ad08ba1ec12d759dc7da">drawCharacter</a>(<span class="stringliteral">&quot;Chen&quot;</span>, 0, 0, 2);</div>
+<div class="line">    <a class="code hl_function" href="group___drawing.html#ga5085538192b59d65327e970887ee805c">drawCharacter</a>(<span class="stringliteral">&quot;Chen&quot;</span>, 0, 0, 2);</div>
 <div class="line">}</div>
 <div class="ttc" id="a_t_h_g_lib_8h_html"><div class="ttname"><a href="_t_h_g_lib_8h.html">THGLib.h</a></div></div>
-<div class="ttc" id="agroup___drawing_html_gaaaa206673539b3306efee8b069f43709"><div class="ttname"><a href="group___drawing.html#gaaaa206673539b3306efee8b069f43709">clearScreen</a></div><div class="ttdeci">void clearScreen(COLORREF fillColor=RGB(255, 255, 255), COLORREF brushColor=RGB(0, 0, 0))</div><div class="ttdoc">Функция очистки экрана</div><div class="ttdef"><b>Definition:</b> THGLib.h:1025</div></div>
-<div class="ttc" id="agroup___drawing_html_gaab24640b0609ad08ba1ec12d759dc7da"><div class="ttname"><a href="group___drawing.html#gaab24640b0609ad08ba1ec12d759dc7da">drawCharacter</a></div><div class="ttdeci">void drawCharacter(string characterName, int x, int y, int size, bool accessoiresAreVisible=true, bool eyesClosed=false, bool mouthOpened=true, bool eyebrowVisible=true, bool blushVisible=true, COLORREF hairColor=0, COLORREF clothesColor=0, COLORREF eyesColor=0)</div><div class="ttdoc">Функция отрисовки персонажа</div><div class="ttdef"><b>Definition:</b> THGLib.h:1031</div></div>
+<div class="ttc" id="agroup___drawing_html_ga5085538192b59d65327e970887ee805c"><div class="ttname"><a href="group___drawing.html#ga5085538192b59d65327e970887ee805c">drawCharacter</a></div><div class="ttdeci">void drawCharacter(string characterName, int x, int y, double size, bool accessoiresAreVisible=true, bool eyesClosed=false, bool mouthOpened=true, bool eyebrowVisible=true, bool blushVisible=true, COLORREF hairColor=0, COLORREF clothesColor=0, COLORREF eyesColor=0, bool yMultiplierAbs=false)</div><div class="ttdoc">Функция отрисовки персонажа</div><div class="ttdef"><b>Definition:</b> THGLib.h:1044</div></div>
+<div class="ttc" id="agroup___drawing_html_gaaaa206673539b3306efee8b069f43709"><div class="ttname"><a href="group___drawing.html#gaaaa206673539b3306efee8b069f43709">clearScreen</a></div><div class="ttdeci">void clearScreen(COLORREF fillColor=RGB(255, 255, 255), COLORREF brushColor=RGB(0, 0, 0))</div><div class="ttdoc">Функция очистки экрана</div><div class="ttdef"><b>Definition:</b> THGLib.h:1038</div></div>
 </div><!-- fragment --> 
 </div>
 </div>
-<a id="gaab24640b0609ad08ba1ec12d759dc7da" name="gaab24640b0609ad08ba1ec12d759dc7da"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gaab24640b0609ad08ba1ec12d759dc7da">&#9670;&nbsp;</a></span>drawCharacter()</h2>
+<a id="ga5085538192b59d65327e970887ee805c" name="ga5085538192b59d65327e970887ee805c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga5085538192b59d65327e970887ee805c">&#9670;&nbsp;</a></span>drawCharacter()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -181,7 +181,7 @@ $(document).ready(function(){initNavTree('group___drawing.html',''); initResizab
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
+          <td class="paramtype">double&#160;</td>
           <td class="paramname"><em>size</em>, </td>
         </tr>
         <tr>
@@ -230,7 +230,13 @@ $(document).ready(function(){initNavTree('group___drawing.html',''); initResizab
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">COLORREF&#160;</td>
-          <td class="paramname"><em>eyesColor</em> = <code>0</code>&#160;</td>
+          <td class="paramname"><em>eyesColor</em> = <code>0</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>yMultiplierAbs</em> = <code>false</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -244,21 +250,23 @@ $(document).ready(function(){initNavTree('group___drawing.html',''); initResizab
 <p >Данная функция используется для отрисовки персонажа с указанием его имени, координат на полотне, размера и пеерключаемых параметров по вашему желанию. </p><dl class="params"><dt>Аргументы</dt><dd>
   <table class="params">
     <tr><td class="paramname">characterName</td><td>Имя персонажа из списка на главной странице. </td></tr>
-    <tr><td class="paramname">x</td><td>Координата X левого верхнего угла изображения. </td></tr>
-    <tr><td class="paramname">y</td><td>Координата Y левого верхнего угла изображения. </td></tr>
+    <tr><td class="paramname">x</td><td>Координата X начальной точки изображения. </td></tr>
+    <tr><td class="paramname">y</td><td>Координата Y начальной точки изображения. </td></tr>
     <tr><td class="paramname">size</td><td>Множитель размера персонажа относительно стандартного (300x177). </td></tr>
-    <tr><td class="paramname">accessoiresAreVisible</td><td><em>Переключаемый параметр отображения аксессуаров. Необязателен. Если не указан - присваивается значение true.</em> </td></tr>
-    <tr><td class="paramname">eyesClosed</td><td><em>Переключаемый параметр состояния глаз. Необязателен. Если не указан - присваивается значение false.</em> </td></tr>
-    <tr><td class="paramname">mouthOpened</td><td><em>Переключаемый параметр состояния рта. Необязателен. Если не указан - присваивается значение true.</em> </td></tr>
-    <tr><td class="paramname">eyebrowVisible</td><td><em>Переключаемый параметр отображения бровей. Необязателен. Если не указан - присваивается значение true.</em> </td></tr>
-    <tr><td class="paramname">blushVisible</td><td><em>Переключаемый параметр отображения румянца. Необязателен. Если не указан - присваивается значение true.</em> </td></tr>
+    <tr><td class="paramname">accessoiresAreVisible</td><td><em>Переключаемый параметр отображения аксессуаров. Необязателен. Если не указан - присваивается значение true (отрисовка аксессуаров).</em> </td></tr>
+    <tr><td class="paramname">eyesClosed</td><td><em>Переключаемый параметр состояния глаз. Необязателен. Если не указан - присваивается значение false (отрисовка открытых глаз).</em> </td></tr>
+    <tr><td class="paramname">mouthOpened</td><td><em>Переключаемый параметр состояния рта. Необязателен. Если не указан - присваивается значение true (отрисовка открытого рта).</em> </td></tr>
+    <tr><td class="paramname">eyebrowVisible</td><td><em>Переключаемый параметр отображения бровей. Необязателен. Если не указан - присваивается значение true (отрисовка бровей).</em> </td></tr>
+    <tr><td class="paramname">blushVisible</td><td><em>Переключаемый параметр отображения румянца. Необязателен. Если не указан - присваивается значение true (отрисовка румянца).</em> </td></tr>
     <tr><td class="paramname">hairColor</td><td><em>Параметр цвета волос. Необязателен. Если не указан - присваивается стандартное значение для персонажа.</em> </td></tr>
     <tr><td class="paramname">clotherColor</td><td><em>Параметр цвета одежды. Необязателен. Если не указан - присваивается стандартное значение для персонажа.</em> </td></tr>
-    <tr><td class="paramname">eyesColor</td><td><em>Параметр цвета глаз. Необязателен. Если не указан - присваивается стандартное значение для персонажа.</em></td></tr>
+    <tr><td class="paramname">eyesColor</td><td><em>Параметр цвета глаз. Необязателен. Если не указан - присваивается стандартное значение для персонажа.</em> </td></tr>
+    <tr><td class="paramname">yMultiplierAbs</td><td><b>(НОВОЕ)</b> <em>Переключаемый параметр отражения Y оси при отрицательном значении size. Необязателен. Если не указан - присваивается true (Y ось не отражается).</em></td></tr>
   </table>
   </dd>
 </dl>
-<p>@usage </p><div class="fragment"><div class="line"><span class="preprocessor">#include &quot;TXLib.h&quot;</span></div>
+<dl class="section note"><dt>Заметки</dt><dd>Используйте отрицательное значение параметра size и изменяйте параметр yMultiplierAbs для поворота персонажа относительно начальной точки.</dd></dl>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &quot;TXLib.h&quot;</span></div>
 <div class="line"><span class="preprocessor">#include &quot;<a class="code" href="_t_h_g_lib_8h.html">THGLib.h</a>&quot;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">using namespace </span>std;</div>
@@ -266,10 +274,10 @@ $(document).ready(function(){initNavTree('group___drawing.html',''); initResizab
 <div class="line"><span class="keywordtype">int</span> main() {</div>
 <div class="line">    txCreateWindow(600, 354); <span class="comment">//Создаем окно 600x354 пикселей</span></div>
 <div class="line">    <a class="code hl_function" href="group___drawing.html#gaaaa206673539b3306efee8b069f43709">clearScreen</a>(); <span class="comment">//Очищаем экран</span></div>
-<div class="line">    <a class="code hl_function" href="group___drawing.html#gaab24640b0609ad08ba1ec12d759dc7da">drawCharacter</a>(<span class="stringliteral">&quot;Cirno&quot;</span>, 0, 0, 1); <span class="comment">//Рисуем стандартную Сирно на координатах x = 0, y = 0</span></div>
+<div class="line">    <a class="code hl_function" href="group___drawing.html#ga5085538192b59d65327e970887ee805c">drawCharacter</a>(<span class="stringliteral">&quot;Cirno&quot;</span>, 0, 0, 1); <span class="comment">//Рисуем стандартную Сирно на координатах x = 0, y = 0</span></div>
 <div class="line">    Sleep(1000);</div>
 <div class="line">    <a class="code hl_function" href="group___drawing.html#gaaaa206673539b3306efee8b069f43709">clearScreen</a>();</div>
-<div class="line">    <a class="code hl_function" href="group___drawing.html#gaab24640b0609ad08ba1ec12d759dc7da">drawCharacter</a>(<span class="stringliteral">&quot;Chen&quot;</span>, 0, 0, 2, <span class="keyword">true</span>, <span class="keyword">false</span>, <span class="keyword">false</span>, <span class="keyword">true</span>, <span class="keyword">true</span>, RGB (134, 212, 76), RGB (0, 183, 164), RGB (172, 123, 193)); <span class="comment">//Рисуем кастомную Чэнь</span></div>
+<div class="line">    <a class="code hl_function" href="group___drawing.html#ga5085538192b59d65327e970887ee805c">drawCharacter</a>(<span class="stringliteral">&quot;Chen&quot;</span>, 0, 0, 2, <span class="keyword">true</span>, <span class="keyword">false</span>, <span class="keyword">false</span>, <span class="keyword">true</span>, <span class="keyword">true</span>, RGB (134, 212, 76), RGB (0, 183, 164), RGB (172, 123, 193)); <span class="comment">//Рисуем кастомную Чэнь</span></div>
 <div class="line">}</div>
 </div><!-- fragment --> 
 </div>

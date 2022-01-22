@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['chenbody_0',['chenBody',['../group___local.html#ga64173c41e80520c99e9712e1d87fff61',1,'THGLib.h']]],
+  ['chenbody_0',['chenBody',['../group___local.html#ga95c8aa6c716cf718ca6670c449e527f9',1,'THGLib.h']]],
   ['chenclothes_1',['chenClothes',['../group___arrays.html#ga3682899121d2c2a1917079c774875e56',1,'THGLib.h']]],
   ['chenclothest_2',['chenClothesT',['../group___arrays.html#ga67da2dd84500fa2f2f191f19c0976640',1,'THGLib.h']]],
   ['chenearleft_3',['chenEarLeft',['../group___arrays.html#ga2e33bc9b43b60b0e0dbc85597bef7234',1,'THGLib.h']]],
@@ -13,7 +13,7 @@ var searchData=
   ['chenhatt_10',['chenHatT',['../group___arrays.html#ga2ea027c3d26365662ffd3df5d0d50598',1,'THGLib.h']]],
   ['chenprofile_11',['chenProfile',['../group___arrays.html#gaabd1caaf58c0e020286995eedea00745',1,'THGLib.h']]],
   ['chenprofilet_12',['chenProfileT',['../group___arrays.html#ga53c4b9b10f2e14c1074b8472ab2e8800',1,'THGLib.h']]],
-  ['cirnobody_13',['cirnoBody',['../group___local.html#ga87feea38814a132566b01b78a5afc851',1,'THGLib.h']]],
+  ['cirnobody_13',['cirnoBody',['../group___local.html#gaa58913984c9f0da43aadb3120e1e13d1',1,'THGLib.h']]],
   ['cirnobow_14',['cirnoBow',['../group___arrays.html#ga0b62d67777b76492e832bec5cc5b9315',1,'THGLib.h']]],
   ['cirnobowt_15',['cirnoBowT',['../group___arrays.html#ga358d8823e38c2b993bc98f852eb9db36',1,'THGLib.h']]],
   ['cirnohat1_16',['cirnoHat1',['../group___arrays.html#ga71fcc004af5e891ab9a306418297b526',1,'THGLib.h']]],
